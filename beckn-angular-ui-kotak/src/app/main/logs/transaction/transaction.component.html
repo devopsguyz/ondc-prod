@@ -1,0 +1,101 @@
+<div class="content-wrapper container-xxl p-0" style="margin-top: 60px !important;">
+  <div class="content-body">
+    <!-- content-header component -->
+    <!-- Basic Alerts start -->
+    <section id="sample-page">
+
+      <div class="row">
+        
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">{{ 'TRANSACTION.title' | translate }}</h4>
+            </div>
+            <div class="card-body pb-1">
+
+              <form class="form" [formGroup]="form">
+                <div class="row">
+                  <!-- <div class="col-md-3 col-6">
+                    <div class="form-group">
+                      <label for="first-name-column">Database Server</label>
+                      <select id="first-name-column" formControlName="serverValue" class="form-control">
+                        <option value="api_audit">API_AUDIT</option>
+                        <option value="api_audit_archvl">API_AUDIT_ARCHVL</option>
+                        <option value="api_audit_archvl_tmp">API_AUDIT_ARCHVL_TMP</option>
+                      </select>
+                    </div>
+                  </div> -->
+                  <div class="col-md-3 col-6">
+                    <div class="form-group">
+                      <label for="first-name-column">Transaction Id</label>
+                      <input type="text" id="first-name-column" formControlName="transactionId" class="form-control"
+                        placeholder="Transaction Id" name="fname-column" />
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="form-group">
+                      <label for="first-name-column">Action</label>
+                      <select id="first-name-column" formControlName="typeValue" class="form-control">
+                        <option value="search">Adapter search</option>
+                        <option value="select">select</option>
+                       
+                        <option value="init">init</option>
+                        <option value="confirm">confirm</option>
+                        <option value="status">status</option>
+                        <option value="track">track</option>
+                        <option value="cancel">cancel</option>
+                        <option value="update">update</option>
+                        <option value="rating">rating</option>
+                        <option value="support">support</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-1 col-12 search-btn">
+                    <button type="button" class="btn btn-icon btn-outline-primary" (click)="searchTransaction()"
+                      rippleEffect>
+                      <span [data-feather]="'search'"></span></button>
+
+                  </div>
+                  <div class="col-md-3 col-12">
+
+
+                  </div>
+                  <div class="col-md-1 col-12 search-btn">
+
+                  </div>
+                  <div class="col-md-3 col-12">
+
+
+                  </div>
+                  <div class="col-md-1 col-12 search-btn">
+
+                  </div>
+
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Basic Alerts end -->
+    <section id="sample-page" *ngIf="searchFlag">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+              <span class="ml-25 align-middle">Loading...</span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <app-transaction-adapter [mapInput]="mapInput" [type]="type" *ngIf="type && type!='gateway' && !searchFlag" ></app-transaction-adapter>
+  <app-transaction-gateway [mapInput]="mapInput" [type]="type" *ngIf="type && type=='gateway' && !searchFlag " ></app-transaction-gateway>
+  </div>
+</div>

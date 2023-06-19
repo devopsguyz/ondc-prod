@@ -1,0 +1,25 @@
+<div id="statistics-line-chart" #statisticsLineRef>
+ 
+<apx-chart
+[chart]="{
+  height: 70,
+  width:statisticsLineRef.offsetWidth,
+  type: 'line',
+  toolbar: {
+    show: false
+  },
+  zoom: {
+    enabled: false
+  }
+}" 
+[grid]="statisticsLine.grid"
+[stroke]="statisticsLine.stroke"
+[colors]="statisticsLine.colors"
+[series]="statisticsLine.series"
+[markers]="statisticsLine.markers"
+[xaxis]="statisticsLine.xaxis"
+[yaxis]="statisticsLine.yaxis"
+[tooltip]="statisticsLine.tooltip"
+></apx-chart>
+
+</div>

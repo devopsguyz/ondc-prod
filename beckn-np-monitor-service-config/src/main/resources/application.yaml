@@ -1,0 +1,18 @@
+spring:
+    cloud:
+      config:
+        server:
+          git:
+            uri: https://github.com/protean-ondc/beckn-gateway/tree/np_onboarding_0.0.4/beckn-np-monitor-service-config/config
+            ignoreLocalSshSettings: true
+            hostKey: ganesh04sep
+            hostKeyAlgorithm: ssh-rsa
+            privateKey: |
+                         -----BEGIN OPENSSH PRIVATE KEY-----
+                         b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABAAK+z62S
+                         7DB9GtI+IS+RE0AAAAEAAAAAEAAAAzAAAAC3NzaC1lZDI1NTE5AAAAIEZ3mrt1pxYR5if1
+                         PPupbW4gUX7j1lH44LyiYdejSfN8AAAAsOGKVdphleUpn2taM/YbbDN55/UdSijo6x4PX7
+                         z7Rz6u5hH+hg/6F7vE0lPDKafAW7RvsSmn9ERdfzGtqhUGQ2rN0KC2xkyBxSfByYdvEZJ4
+                         ynwCKQbdyre3TrHNv+s0n9Bl/X/nGjJfEJoGVJvpJAUV5G4GL0rLlsarBoDoEtoCeerbLo
+                         X6wmR/tvNkidivmQJ87Z/+bVUF34baIOzxOm+LYKQagdDQJ8q6UlOWW5+1
+                         -----END OPENSSH PRIVATE KEY-----

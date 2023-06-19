@@ -1,0 +1,117 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body" *ngIf="refreshFlag">
+    <section id="statistics-card">
+      <div class="row match-height">
+        <div class="col-lg-4 col-12">
+          <div class="row">
+            <div class="col-lg-6 col-6">
+              <div class="card">
+                <div class="card-body pb-50">
+                  <app-logs-div-chart-widget [api]="'seller'" [seriesTitle]="'Count'" [index]="0"
+                    [title]="' Daily Seller Transaction '" [type]="'DAYS'" [start]="startDay" [end]="end">
+                  </app-logs-div-chart-widget>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-6">
+              <div class="card">
+                <div class="card-body pb-50">
+                  <app-logs-div-chart-widget [api]="'seller'" [seriesTitle]="'Count'" [index]="0"
+                  [title]="'Weekly Seller Transaction'" [type]="'WEEKS'" [start]="startWeek" [end]="end">
+                </app-logs-div-chart-widget>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-6">
+              <div class="card">
+                <div class="card-body pb-50">
+                  <app-logs-div-chart-widget [api]="'seller'" [seriesTitle]="'Count'" [index]="0"
+                  [title]="'Monthly Seller Transaction'" [type]="'MONTHS'" [start]="startMonth" [end]="end">
+                </app-logs-div-chart-widget>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-6">
+              <div class="card">
+                <div class="card-body pb-50">
+                  <app-logs-div-chart-widget [api]="'seller'" [seriesTitle]="'Count'" [index]="0"
+                    [title]="'Yearly Seller Transaction'" [type]="'YEARS'" [start]="startYear" [end]="end">
+                  </app-logs-div-chart-widget>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+        <div class="col-lg-8 col-8">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <app-logs-div-chart-line-buyer-seller [api]="'seller'" [seriesTitle]="' Transactions'" [index]="1"
+                  [title]="'SellerWise Transaction'" [start]="startYear" [end]="end" [endTime]="endTime">
+                </app-logs-div-chart-line-buyer-seller>
+              </div>
+            </div>
+
+
+            <div class="col-12" >
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title"> {{'SELLER.title' |translate}}</h4>
+                </div>
+                <div class="row" style="padding: 10px;">
+                  <div class="col-md-6 col-6 d-flex justify-content-start" >
+                    <div class="header-right d-flex align-items-center mt-sm-0 mt-1">
+                      <i class="font-medium-2" data-feather="calendar"></i>
+                      <ng2-flatpickr [config]="DateRangeOptions" #ng2FlatPicker [formControl]="this.date">
+                      </ng2-flatpickr>
+                    </div>
+                    <div class="header-right d-flex align-items-center  mt-sm-0 mt-1">
+
+                      <!-- <button type="button" class="btn btn-icon btn-outline-primary" *ngIf="!flag" (click)="onSerach()" rippleEffect>
+                        <span [data-feather]="'refresh-cw'" ></span></button> -->
+                        <button class="btn btn-outline-primary"  *ngIf="flag" type="button" disabled rippleEffect>
+                          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                          <span class="ml-25 align-middle">Loading...</span>
+                        </button>
+                        
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-6 d-flex justify-content-end" >
+
+                    <div class="header-right d-flex align-items-center  mt-sm-0 mt-1">
+                      <label class="d-flex align-items-center serach_text_padding"><input type="search"
+                          placeholder="Search" class="form-control ml-25" (keyup)="filterUpdate($event)" /></label>
+                    </div>
+                  </div>
+                </div>
+                
+
+                <!-- ngx-datatable-row-details -->
+                <ngx-datatable #tableObj class="bootstrap core-bootstrap" [headerHeight]="40" [footerHeight]="50"
+                  [rowHeight]="'auto'" [limit]="5" [rows]="countArray" [scrollbarH]="true">
+                  <!-- Row Detail Template -->
+
+                  <ngx-datatable-column name="{{'SELLER.NAME' |translate}}" prop="sellerId" [width]="500">
+
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="{{'SELLER.count' |translate}}" prop="count" [width]="500">
+                  </ngx-datatable-column>
+
+
+                </ngx-datatable>
+                <!-- ngx-datatable-row-details -->
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

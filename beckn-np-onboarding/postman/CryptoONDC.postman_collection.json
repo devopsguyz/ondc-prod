@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "97546310-0b08-4dac-a54f-bc0386b282f8",
+		"name": "CryptoONDC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20106488"
+	},
+	"item": [
+		{
+			"name": "/generate-sign-keys",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/generate-sign-keys",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"generate-sign-keys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/sign",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"private_key\":\"i3ZF10I7KBI0PgWLZ3Gc1Ez8SSslCfbhlJHqhTW/v8E=\",\r\n    \"text_to_sign\":\"text\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/sign",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"sign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/verify-sign",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n       \"text_to_sign\":\"text\",\r\n       \"signed_text\":\"XZ7lmyU7Q2YW8l4NkIXpLDXOo4JRx/6gT+gdak+syhXC1glzk0puwIxdq3zs+7ZUHTMPXnhMauPzXu9K7Y9JAg==\",\r\n       \"public_key\":\"JJjyw2MMA3aTMvub6etsjUIWDVmdt8VqP1i1SfsH4No=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/verify-sign",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"verify-sign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/blake/value",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"value\":\"{\\\"context\\\":{\\\"transaction_id\\\":\\\"d3c74dfb-5960-41ce-a388-0487f400459e\\\",\\\"country\\\":\\\"IND\\\",\\\"bpp_id\\\":\\\"apigateway.bizom.in/ondc\\\",\\\"city\\\":\\\"std:080\\\",\\\"message_id\\\":\\\"0b530fbf-526e-4d97-bf4b-5f99260d7595\\\",\\\"core_version\\\":\\\"1.0.0\\\",\\\"ttl\\\":\\\"PT30S\\\",\\\"bap_id\\\":\\\"www.firstforwardondc.com\\\",\\\"domain\\\":\\\"nic2004:52110\\\",\\\"bpp_uri\\\":\\\"https://apigateway.bizom.in/ondc\\\",\\\"action\\\":\\\"on_search\\\",\\\"bap_uri\\\":\\\"https://www.firstforwardondc.com/ondc/v1/146622/\\\",\\\"timestamp\\\":\\\"2022-10-06T14:01:48.845Z\\\"},\\\"message\\\":{\\\"catalog\\\":{\\\"bpp/fulfillments\\\":[{\\\"id\\\":\\\"1\\\",\\\"type\\\":\\\"Delivery\\\"},{\\\"id\\\":\\\"2\\\",\\\"type\\\":\\\"Pickup\\\"},{\\\"id\\\":\\\"3\\\",\\\"type\\\":\\\"Delivery and Pickup\\\"}],\\\"bpp/providers\\\":[{\\\"locations\\\":[{\\\"address\\\":{\\\"door\\\":\\\"No.443\\\",\\\"city\\\":\\\"Bengaluru\\\",\\\"street\\\":\\\" 9th Cross\\\",\\\"area_code\\\":\\\"560086\\\",\\\"locality\\\":\\\" JP Nagar 2nd phase\\\",\\\"name\\\":\\\"The Good Stuff Priva\\\",\\\"state\\\":\\\"Karnataka\\\"},\\\"id\\\":\\\"3\\\",\\\"gps\\\":\\\"12.91, 77.5921\\\"}],\\\"descriptor\\\":{\\\"name\\\":\\\"The Good Stuff Private Limited\\\",\\\"symbol\\\":\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_59ede754Asset_3@3x.png\\\",\\\"images\\\":[\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_59ede754Asset_3@3x.png\\\"],\\\"short_desc\\\":\\\"Bizom's provider.\\\",\\\"long_desc\\\":\\\"Bizom's provider.\\\"},\\\"id\\\":\\\"3\\\",\\\"ttl\\\":\\\"P1D\\\",\\\"items\\\":[{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"1300.0\\\",\\\"value\\\":\\\"693.19\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"15\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Choco Spread with Almond | Smooth & Delicious | 90% More Protein | 1240 g (Pack of 4)\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/y6bqvKcL/3-Luv-It-Almond-Spread-Pack-of-4.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/y6bqvKcL/3-Luv-It-Almond-Spread-Pack-of-4.jpg\\\",\\\"15131_a5ccc7533-Luv-It-Almond-Spread-Pack-of-4.jpg\\\",\\\"15131_9254beae15_B.PNG\\\",\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_9254beae15_B.PNG\\\",\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_9254beae15_B.PNG\\\"],\\\"short_desc\\\":\\\"Spread with Almond Power: LuvIt brings to you a delicious Choco Spread crafted by expert chocolatiers with the power of Almonds to give you both taste and health!; A spread so lusciously chocolaty it makes everything taste magically delicious! Now with th\\\",\\\"long_desc\\\":\\\"Spread with Almond Power: LuvIt brings to you a delicious Choco Spread crafted by expert chocolatiers with the power of Almonds to give you both taste and health!; A spread so lusciously chocolaty it makes everything taste magically delicious! Now with th\\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}},{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"495.0\\\",\\\"value\\\":\\\"315.18\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"26\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Loca Home Delights Choco Caramel Bar Multipack  (3 x 200 g)\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/SxQFQG0v/LOCA-1100-X-1100-02.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/SxQFQG0v/LOCA-1100-X-1100-02.jpg\\\",\\\"15131_6381689431_B.PNG\\\",\\\"https://postimg.cc/N2fPPxX4\\\",\\\"https://postimg.cc/G94QmRny\\\"],\\\"short_desc\\\":\\\"LuvIt Loca is a perfect trilogy of choco, caramel and noughat! These chocolates bars are super soft, melt in mouth and non sticky. \\\\nOne bite is sure to drive you Loca as well!\\\\nHome Delights - When every moment is a delightful one!\\\\nThis unique multipack co\\\",\\\"long_desc\\\":\\\"LuvIt Loca is a perfect trilogy of choco, caramel and noughat! These chocolates bars are super soft, melt in mouth and non sticky. \\\\nOne bite is sure to drive you Loca as well!\\\\nHome Delights - When every moment is a delightful one!\\\\nThis unique multipack co\\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}},{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"1494.0\\\",\\\"value\\\":\\\"1112.4\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"32\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Cocoa Crush - Dark Compound Bar | Perfect for Baking, Frosting, Chocolate Making Bars (6 x 500 g)\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/MHy7LRd7/Cocoa-Crush-Pack-of-6-01.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/MHy7LRd7/Cocoa-Crush-Pack-of-6-01.jpg\\\",\\\"15131_3f348943Cocoa-Crush-Pack-of-6-01.jpg\\\",\\\"15131_797d3d89cocoa-crush-1-back.jpg\\\",\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_797d3d89cocoa-crush-1-back.jpg\\\"],\\\"short_desc\\\":\\\"100% Delicious : Delectable tasting Premium Dark Compound Bars to give you that perfect Rich Chocolaty taste; Perfect Melt : Ease of usage with double boiler or microwave method. Gives perfect texture for any creation.; Best Desserts: Your perfect partner\\\",\\\"long_desc\\\":\\\"100% Delicious : Delectable tasting Premium Dark Compound Bars to give you that perfect Rich Chocolaty taste; Perfect Melt : Ease of usage with double boiler or microwave method. Gives perfect texture for any creation.; Best Desserts: Your perfect partner\\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}},{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"220.0\\\",\\\"value\\\":\\\"176.13\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"37\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Luscious Love Delights Bars (162 g)\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/qR5tGGnb/Front-Image-Luv-It-Luscious-Love-delights-Home-pack-of-2.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/qR5tGGnb/Front-Image-Luv-It-Luscious-Love-delights-Home-pack-of-2.jpg\\\",\\\"15131_f36a396cFront-Image-Luv-It-Luscious-Love-delights-Home-pack-of-2.jpg\\\",\\\"15131_3a35a6e0Back-Image-Luv-It-Luscious-Love-delights-Home-pack-of-2.jpg\\\"],\\\"short_desc\\\":\\\"LuvIt bring to you deliciously smooth and luscious chocolate bars. Enjoy the unique Heart shaped chocolate as a perfect gift of Love!; Love Delights - When every moment is a Lovable one!; This unit contains 1 pack of LuvIt Luscious Love Delights, 162g\\\",\\\"long_desc\\\":\\\"LuvIt bring to you deliciously smooth and luscious chocolate bars. Enjoy the unique Heart shaped chocolate as a perfect gift of Love!; Love Delights - When every moment is a Lovable one!; This unit contains 1 pack of LuvIt Luscious Love Delights, 162g\\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}},{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"1440.0\\\",\\\"value\\\":\\\"1234.97\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"49\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Smackers Chocolate and Fruit Flavored Lollipops | 8 exciting Flavours for Kids | Mango | Watermelon | Green Apple | Blue Lemonade | Chocolate | Chocolate Butterscotch | Chocolate Strawb\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/mkZyqj6Q/Combo.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/mkZyqj6Q/Combo.jpg\\\",\\\"15131_babf7559Combo.jpg\\\",\\\"https://i.postimg.cc/tJKp7dL8/Smackers-Combo.jpg\\\"],\\\"short_desc\\\":\\\"LuvIt Smackers Lollipop Happy Pack offers range of lip smacking fruit flavours and chocolate lollipops.; Smackers Happy Pack now offers bigger lollipops that are ideal for any occasion, be it gifting or just treating yourself or your children with one at \\\",\\\"long_desc\\\":\\\"LuvIt Smackers Lollipop Happy Pack offers range of lip smacking fruit flavours and chocolate lollipops.; Smackers Happy Pack now offers bigger lollipops that are ideal for any occasion, be it gifting or just treating yourself or your children with one at \\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}},{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"900.0\\\",\\\"value\\\":\\\"594.31\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"55\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Chocorich Classic Eclairs Chocolate | Birthday Party Pack | Bars (6 x 390 g)\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/QdV9zwN8/Pack-of-6.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/QdV9zwN8/Pack-of-6.jpg\\\",\\\"15131_eff087c5Pack-of-6.jpg\\\",\\\"15131_f5a5c1ce55_B.PNG\\\",\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_d4bac250Eclairs-BOP.jpg\\\"],\\\"short_desc\\\":\\\"Delicious Chocolate Éclairs with a Rich Chocolate burst in every bite; Celebrate any occasion with the fun sized party pack; This unit contains 6 packs LuvIt Chocorich Classic Eclairs\\\",\\\"long_desc\\\":\\\"Delicious Chocolate Éclairs with a Rich Chocolate burst in every bite; Celebrate any occasion with the fun sized party pack; This unit contains 6 packs LuvIt Chocorich Classic Eclairs\\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}},{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"249.0\\\",\\\"value\\\":\\\"204.97\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"72\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Cocoa Crush - Milk Compound Bar | Perfect for Baking, Frosting, Chocolate Making Bars (500 g)\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/PqfCZqN5/Milk-BOP.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/PqfCZqN5/Milk-BOP.jpg\\\",\\\"15131_2efe787dMilk-BOP.jpg\\\",\\\"15131_2cb1922272_B.PNG\\\",\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_2cb1922272_B.PNG\\\"],\\\"short_desc\\\":\\\"100% Delicious : Delectable tasting Premium Milk Compound Bars to give you that perfect Rich Chocolaty taste; Perfect Melt : Ease of usage with double boiler or microwave method. Gives perfect texture for any creation.; Best Desserts: Your perfect partner\\\",\\\"long_desc\\\":\\\"100% Delicious : Delectable tasting Premium Milk Compound Bars to give you that perfect Rich Chocolaty taste; Perfect Melt : Ease of usage with double boiler or microwave method. Gives perfect texture for any creation.; Best Desserts: Your perfect partner\\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}},{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"240.0\\\",\\\"value\\\":\\\"153.47\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"76\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Cocoa Crush Powder | Baking | Milk Shakes | Cake | Cocoa Powder (190 g)\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/8CT6HHXD/Cocoa-Crush-tub-1000-X1000-pack-of-2.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/8CT6HHXD/Cocoa-Crush-tub-1000-X1000-pack-of-2.jpg\\\",\\\"15131_34ff89fdCocoa-Crush-tub-1000-X1000-pack-of-F.jpg\\\",\\\"15131_d2e926522-Cocoa-Crush-BOP.jpg\\\",\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_d2e926522-Cocoa-Crush-BOP.jpg\\\"],\\\"short_desc\\\":\\\"100% Cocoa: Natural Pure Cocoa with no added sugar / unsweetened to give you that perfect Rich Chocolaty taste; Best Desserts: Your perfect partner for creating making baking anything delicious and heavenly, be it cakes, brownies, frostings; Delectable Dr\\\",\\\"long_desc\\\":\\\"100% Cocoa: Natural Pure Cocoa with no added sugar / unsweetened to give you that perfect Rich Chocolaty taste; Best Desserts: Your perfect partner for creating making baking anything delicious and heavenly, be it cakes, brownies, frostings; Delectable Dr\\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}},{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"408.0\\\",\\\"value\\\":\\\"298.7\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"83\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Smackers Happy Pack Chocolate Flavored Lollipops Chocolate Lollipop (6 x 96 g)\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/NGyvFwGq/Chocolate-6-pack.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/NGyvFwGq/Chocolate-6-pack.jpg\\\",\\\"15131_e1ffbd58Smackers-Pouch-Choco-BOP.jpg\\\",\\\"15131_0a833bfeChocolate-6-pack.jpg\\\",\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_e1ffbd58Smackers-Pouch-Choco-BOP.jpg\\\"],\\\"short_desc\\\":\\\"LuvIt Smackers Lollipop Happy Pack offers range of lip smacking chocolate lollipops.; Smackers Happy Pack now offers bigger lollipops that are ideal for any occasion, be it gifting or just treating yourself or your children with one at home. It also offer\\\",\\\"long_desc\\\":\\\"LuvIt Smackers Lollipop Happy Pack offers range of lip smacking chocolate lollipops.; Smackers Happy Pack now offers bigger lollipops that are ideal for any occasion, be it gifting or just treating yourself or your children with one at home. It also offer\\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}},{\\\"@ondc/org/cancellable\\\":false,\\\"@ondc/org/available_on_cod\\\":true,\\\"@ondc/org/returnable\\\":false,\\\"category_id\\\":\\\"Packaged Foods\\\",\\\"price\\\":{\\\"currency\\\":\\\"INR\\\",\\\"maximum_value\\\":\\\"408.0\\\",\\\"value\\\":\\\"321.36\\\"},\\\"@ondc/org/seller_pickup_return\\\":false,\\\"@ondc/org/contact_details_consumer_care\\\":\\\"ondchelp@mobisy.com\\\",\\\"id\\\":\\\"87\\\",\\\"descriptor\\\":{\\\"name\\\":\\\"LuvIt Smackers Fruit and Chocolate Flavoured Lollipops Happy Pack Combo with Surprise Free Gift | Pack of 6 - 96g Each\\\",\\\"symbol\\\":\\\"https://i.postimg.cc/SsgQhLG6/FOP.jpg\\\",\\\"images\\\":[\\\"https://i.postimg.cc/SsgQhLG6/FOP.jpg\\\",\\\"15131_221ebe01FOP.jpg\\\",\\\"15131_5cbaee8f02_(1).jpg\\\"],\\\"short_desc\\\":\\\"LuvIt Smackers Lollipop Happy Pack offers range of lip smacking fruit flavours and chocolate lollipops.; Smackers Happy Pack now offers bigger lollipops that are ideal for any occasion, be it gifting or just treating yourself or your children with one at \\\",\\\"long_desc\\\":\\\"LuvIt Smackers Lollipop Happy Pack offers range of lip smacking fruit flavours and chocolate lollipops.; Smackers Happy Pack now offers bigger lollipops that are ideal for any occasion, be it gifting or just treating yourself or your children with one at \\\"},\\\"location_id\\\":\\\"3\\\",\\\"fulfillment_id\\\":\\\"1\\\",\\\"tags\\\":{\\\"veg\\\":\\\"Yes\\\"}}]}],\\\"bpp/descriptor\\\":{\\\"name\\\":\\\"Bizom\\\",\\\"symbol\\\":\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_59ede754Asset_3@3x.png\\\",\\\"images\\\":[\\\"https://s3-ap-southeast-1.amazonaws.com/bizomcollatorals/15131_59ede754Asset_3@3x.png\\\"],\\\"short_desc\\\":\\\"Ecommerce App\\\",\\\"long_desc\\\":\\\"Ecommerce App\\\"}}}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://34.131.148.9:9005/blake/value",
+					"protocol": "http",
+					"host": [
+						"34",
+						"131",
+						"148",
+						"9"
+					],
+					"port": "9005",
+					"path": [
+						"blake",
+						"value"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

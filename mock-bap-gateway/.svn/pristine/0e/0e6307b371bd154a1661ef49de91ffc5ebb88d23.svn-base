@@ -1,0 +1,9 @@
+server:
+  port: 8099
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
+  
+## Other Properties
+seller:
+  id: mock_bap1

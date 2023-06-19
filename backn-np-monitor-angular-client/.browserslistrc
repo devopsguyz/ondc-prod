@@ -1,0 +1,12 @@
+# The config to share target browsers and Node.js versions between different front-end tools.
+# It is used in: Autoprefixer, Babel, postcss-preset-env etc...
+#
+# https://github.com/browserslist/browserslist
+
+
+> 0.5%
+last 2 versions
+not dead
+not IE 9-11
+not ios_saf 15.2-15.3
+not safari 15.2-15.3

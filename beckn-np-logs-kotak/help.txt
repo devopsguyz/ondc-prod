@@ -1,0 +1,55 @@
+search
+select
+init
+confirm
+status
+track
+cancel
+update
+rating
+support
+
+
+Search buyer to adapter
+REQUEST_BY_BUYER
+ACK_TO_BUYER
+NACK_TO_BUYER
+
+serach adapter to gatway
+REQUEST_TO_GATEWAY
+ACK_BY_GATEWAY
+BLOCKED_SELLER
+
+
+On_serach gatway to adaptor
+RESPONSE_BY_GATEWAY
+ACK_TO_GATEWAY
+NACK_TO_GATEWAY
+
+
+on_search adaptor to buyer
+RESPONSE_TO_BUYER
+ACK_BY_BUYER
+NACK_BY_BUYER
+INVALID_RESPONSE_BY_BUYER
+
+
+select buyer to adaptor
+REQUEST_BY_BUYER
+ACK_TO_BUYER
+NACK_TO_BUYER
+INVALID_RESPONSE_BY_BUYER
+
+select adaptor to seller
+REQUEST_TO_SELLER
+ACK_BY_SELLER
+BLOCKED_SELLER
+INVALID_RESPONSE_BY_SELLER
+
+onSelect seller to adaptor
+RESPONSE_BY_SELLER
+NACK_TO_SELLER
+ACK_TO_SELLER
+
+
+ 

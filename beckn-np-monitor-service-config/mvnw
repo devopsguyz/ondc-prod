@@ -1,0 +1,28 @@
+1) project beckn-np-monitor
+
+  a) update following varivbles in application.properties file
+  
+    spring.datasource.url=jdbc:postgresql://75.119.158.145:5432/beckn-np-onboarding
+	spring.datasource.username=postgres
+	spring.datasource.password=pwd@1234
+	
+	server.port: 9003
+	# keyclock server
+	spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://75.119.158.145:8082/auth/realms/fossgen/protocol/openid-connect/certs
+  
+  b) java -jar beckn-np-monitor-1.0.jar
+  
+2) Project anguler client
+
+  a) Edit main.js file and updated some following variables
+  
+    apiUrl: 'http://localhost:9003',  
+    webApiRedirectURL:'http://localhost:4200/',
+    urlOauth2:'http://75.119.158.145:8082/auth/realms/fossgen', 
+    oauth2clientToken:'k9Y0zRvy5ivCsYjc9c1mXLGMferM0ySg',
+    scope: 'openid profile',
+    clientId: 'fossgen-web',
+    
+  b) copy this folder into root directory (used http-server for current folder) 
+  
+  

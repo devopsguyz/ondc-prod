@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "5b277b7f-08e1-4035-8ea2-e3e90853c58a",
+		"name": "Crypto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/hello",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestData\": \"{\\\"context\\\":{\\\"country\\\":\\\"IND\\\",\\\"domain\\\":\\\"test-BPP-Mobility\\\",\\\"transaction_id\\\":\\\"3ad6ff68-2427-4e18-8f15-670020a84797\\\",\\\"action\\\":\\\"search\\\",\\\"message_id\\\":\\\"d951b9cc-4ced-4cb4-a0bd-ac8f7dc40a73\\\",\\\"city\\\":\\\"Kochi\\\",\\\"bap_uri\\\":\\\"https://api.beckn.juspay.in/bap/cab/v1\\\",\\\"timestamp\\\":\\\"2022-03-17T08:45:08.756463024Z\\\",\\\"core_version\\\":\\\"0.9.3\\\",\\\"bap_id\\\":\\\"api.beckn.juspay.in/bap/cab/v1\\\"},\\\"message\\\":{\\\"intent\\\":{\\\"fulfillment\\\":{\\\"start\\\":{\\\"time\\\":{\\\"timestamp\\\":\\\"2022-03-17T08:45:08.731307978Z\\\"},\\\"location\\\":{\\\"address\\\":{\\\"area\\\":\\\"Edappally \\\",\\\"state\\\":\\\"Kerala \\\",\\\"country\\\":\\\"India \\\",\\\"building\\\":\\\"Edappally Junction \\\",\\\"door\\\":\\\"LuLu Mall Old NH 47\\\",\\\"street\\\":\\\"Nethaji Nagar\\\",\\\"city\\\":\\\"Kochi \\\",\\\"area_code\\\":\\\"\\\"},\\\"gps\\\":\\\"10.0265216, 76.3085945\\\"}},\\\"distance\\\":\\\"17567.4880000000011932570487260\\\",\\\"end\\\":{\\\"location\\\":{\\\"address\\\":{\\\"area\\\":\\\" \\\",\\\"state\\\":\\\"Kerala \\\",\\\"country\\\":\\\"India \\\",\\\"building\\\":\\\" \\\",\\\"door\\\":\\\"\\\",\\\"street\\\":\\\"\\\",\\\"city\\\":\\\"Kochi \\\",\\\"area_code\\\":\\\"\\\"},\\\"gps\\\":\\\"9.9312328, 76.26730409999999\\\"}}}}}}\",\r\n    \"dbPublicKey\": \"K0el1kYfJI222a8Zja9jOsU68zU+zqT6/AiTobEl66k=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/signature/key",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"signature",
+						"key"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/generate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestData\": \"{\\\"context\\\":{\\\"country\\\":\\\"IND\\\",\\\"domain\\\":\\\"test-BPP-Mobility\\\",\\\"transaction_id\\\":\\\"3ad6ff68-2427-4e18-8f15-670020a84797\\\",\\\"action\\\":\\\"search\\\",\\\"message_id\\\":\\\"d951b9cc-4ced-4cb4-a0bd-ac8f7dc40a73\\\",\\\"city\\\":\\\"Kochi\\\",\\\"bap_uri\\\":\\\"https://api.beckn.juspay.in/bap/cab/v1\\\",\\\"timestamp\\\":\\\"2022-03-17T08:45:08.756463024Z\\\",\\\"core_version\\\":\\\"0.9.3\\\",\\\"bap_id\\\":\\\"api.beckn.juspay.in/bap/cab/v1\\\"},\\\"message\\\":{\\\"intent\\\":{\\\"fulfillment\\\":{\\\"start\\\":{\\\"time\\\":{\\\"timestamp\\\":\\\"2022-03-17T08:45:08.731307978Z\\\"},\\\"location\\\":{\\\"address\\\":{\\\"area\\\":\\\"Edappally \\\",\\\"state\\\":\\\"Kerala \\\",\\\"country\\\":\\\"India \\\",\\\"building\\\":\\\"Edappally Junction \\\",\\\"door\\\":\\\"LuLu Mall Old NH 47\\\",\\\"street\\\":\\\"Nethaji Nagar\\\",\\\"city\\\":\\\"Kochi \\\",\\\"area_code\\\":\\\"\\\"},\\\"gps\\\":\\\"10.0265216, 76.3085945\\\"}},\\\"distance\\\":\\\"17567.4880000000011932570487260\\\",\\\"end\\\":{\\\"location\\\":{\\\"address\\\":{\\\"area\\\":\\\" \\\",\\\"state\\\":\\\"Kerala \\\",\\\"country\\\":\\\"India \\\",\\\"building\\\":\\\" \\\",\\\"door\\\":\\\"\\\",\\\"street\\\":\\\"\\\",\\\"city\\\":\\\"Kochi \\\",\\\"area_code\\\":\\\"\\\"},\\\"gps\\\":\\\"9.9312328, 76.26730409999999\\\"}}}}}}\",\r\n   \"clientPrivateKey\":\"9idyrQGL74rbHV9eL6ePBoYgjHAnIRDQ6/HVKFE+hFU=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/signature/generate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"signature",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestData\": \"{\\\"context\\\":{\\\"country\\\":\\\"IND\\\",\\\"domain\\\":\\\"test-BPP-Mobility\\\",\\\"transaction_id\\\":\\\"3ad6ff68-2427-4e18-8f15-670020a84797\\\",\\\"action\\\":\\\"search\\\",\\\"message_id\\\":\\\"d951b9cc-4ced-4cb4-a0bd-ac8f7dc40a73\\\",\\\"city\\\":\\\"Kochi\\\",\\\"bap_uri\\\":\\\"https://api.beckn.juspay.in/bap/cab/v1\\\",\\\"timestamp\\\":\\\"2022-03-17T08:45:08.756463024Z\\\",\\\"core_version\\\":\\\"0.9.3\\\",\\\"bap_id\\\":\\\"api.beckn.juspay.in/bap/cab/v1\\\"},\\\"message\\\":{\\\"intent\\\":{\\\"fulfillment\\\":{\\\"start\\\":{\\\"time\\\":{\\\"timestamp\\\":\\\"2022-03-17T08:45:08.731307978Z\\\"},\\\"location\\\":{\\\"address\\\":{\\\"area\\\":\\\"Edappally \\\",\\\"state\\\":\\\"Kerala \\\",\\\"country\\\":\\\"India \\\",\\\"building\\\":\\\"Edappally Junction \\\",\\\"door\\\":\\\"LuLu Mall Old NH 47\\\",\\\"street\\\":\\\"Nethaji Nagar\\\",\\\"city\\\":\\\"Kochi \\\",\\\"area_code\\\":\\\"\\\"},\\\"gps\\\":\\\"10.0265216, 76.3085945\\\"}},\\\"distance\\\":\\\"17567.4880000000011932570487260\\\",\\\"end\\\":{\\\"location\\\":{\\\"address\\\":{\\\"area\\\":\\\" \\\",\\\"state\\\":\\\"Kerala \\\",\\\"country\\\":\\\"India \\\",\\\"building\\\":\\\" \\\",\\\"door\\\":\\\"\\\",\\\"street\\\":\\\"\\\",\\\"city\\\":\\\"Kochi \\\",\\\"area_code\\\":\\\"\\\"},\\\"gps\\\":\\\"9.9312328, 76.26730409999999\\\"}}}}}}\",\r\n    \"clientPublicKey\": \"jqjyGsuh5V8Jp/0+tZHCFMQkTXdym1sy19gTHijUA50=\",\r\n    \"sign\": \"Signature keyId=\\\"nsdl.co.in.ba|nsdl_bap1|ed25519\\\",algorithm=\\\"ed25519\\\", created=\\\"1647866321\\\", expires=\\\"1647926321\\\", headers=\\\"(created) (expires) digest\\\", signature=\\\"s6bxS64MJV+8cyhM3M5aiQaHQC6KYgixn5iILrRyqkRWCNDmvEXtAXTmCB0aQSKVs7v1qNJHetcRZLQbzXjEDA==\\\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/signature/verify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"signature",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/encrypt/decrypt/key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/encrypt/decrypt/key",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"encrypt",
+						"decrypt",
+						"key"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/encrypt/text",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": \"Fossgen is awesome123!\",\r\n        \"clientPrivateKey\": \"MFECAQEwBQYDK2VuBCIEIOjgaGsTPVOVMaJLjqUKat+sVgE/JOJP/3dOrnTVGXxMgSEAmV3JT5FCgVMhZV/IzRlkvDYFHV+D4ki9lK+6AE/23BU=\",\r\n       \"proteanPublicKey\": \"MCowBQYDK2VuAyEAogFYHflfqmGram8qCoxfwSuauA6h1KfWVGh1Y0M0CXg=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/encrypt/text",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"encrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/decrypt/text",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": \"Z4gWn4bQn7KHS43hBtmq2HRdSHY8i2Sez0nygdRHOco=\",\r\n    \"clientPublicKey\": \"MCowBQYDK2VuAyEAmV3JT5FCgVMhZV/IzRlkvDYFHV+D4ki9lK+6AE/23BU=\",        \r\n       \"proteanPrivateKey\": \"MFECAQEwBQYDK2VuBCIEIADEbMEtnDIqSDUA2l4jPYBSh4wCHItJkPOE9wYhFlZTgSEAogFYHflfqmGram8qCoxfwSuauA6h1KfWVGh1Y0M0CXg=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/decrypt/text",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"decrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ocsp/verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"domain\": \"https://expired.badssl.com/\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/ocsp/verify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"ocsp",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

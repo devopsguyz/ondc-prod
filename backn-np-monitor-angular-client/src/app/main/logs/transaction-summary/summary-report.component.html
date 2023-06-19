@@ -1,0 +1,101 @@
+<!-- content-header component -->
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body" >
+    <!-- Basic Alerts start -->
+    <section id="sample-page">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">{{ 'SUMMARYREPORT.title' | translate }}</h4>
+            </div>
+            <div class="card-body pb-1">
+              <form class="form" [formGroup]="form">
+                <div class="row">
+                  <div class="col-md-3 col-12">
+                    <div class="form-group">
+                      <label for="first-date-column"> Date</label>
+                      <div style="padding-left : 30px;">
+                        <ng2-flatpickr  [config]="DateRangeOptions"  formControlName="date"></ng2-flatpickr>
+                        <!-- <ng2-flatpickr [config]="DateRangeOptions" formControlName="date"></ng2-flatpickr> -->
+                      </div>
+                      <div style="position: absolute;
+                         top: 32px;
+                         left: 14px;">
+                        <i class="font-medium-2" data-feather="calendar"></i>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-1 col-6 search-btn">
+                    <button type="button" class="btn btn-icon btn-outline-primary"
+                      (click)="searchTransactionDateRange()" rippleEffect>
+                      <span [data-feather]="'download'" click="searchTransactionDateRange()"></span>
+                    </button>
+                  </div>
+                  <div class="col-md-5 col-6 search-btn">
+                    <button type="button" class="btn btn-icon btn-outline-primary" (click)="viewSummeryReport(dirName)"
+                      rippleEffect>
+                      <span [data-feather]="'refresh-cw'" click="viewSummeryReport(dirName)"></span>
+                    </button>
+                    <sapn style="color: rgb(245, 101, 101);" *ngIf="viewMsg">&nbsp;&nbsp;Click to refresh Button</sapn>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sample-page"  *ngIf="viewMsg">
+      <div class="row" style="padding:10px">
+        <div class="col-12">
+          <div class="card" style="padding:10px">
+
+            <ngx-datatable 
+              class="bootstrap core-bootstrap"  
+              [columnMode]="'force'" 
+              [headerHeight]="50"
+              [footerHeight]="50" 
+              [rowHeight]="'auto'" 
+              [limit]="10" 
+              [rows]="rows" 
+              [count]="rows.length"
+              [messages]="{emptyMessage: 'Click to refresh Button'}"
+              >
+              <ngx-datatable-column prop="FileName" >
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  {{value}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="FileName" name="download">
+                <ng-template ngx-datatable-cell-template let-value="value">
+                  <button type="button" class="btn btn-icon btn-outline-primary" (click)="downloadSummeryReport(value)">
+                  <span [data-feather]="'download'" (click)="downloadSummeryReport(value)"></span>
+                </button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sample-page" *ngIf="searchFlag" >
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+              <span class="ml-25 align-middle">Loading...</span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

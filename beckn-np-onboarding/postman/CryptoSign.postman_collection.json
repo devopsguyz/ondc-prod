@@ -1,0 +1,333 @@
+{
+	"info": {
+		"_postman_id": "a9e4ee48-3ca6-48c7-abba-f6630bc8af4b",
+		"name": "CryptoPreProd",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20106488"
+	},
+	"item": [
+		{
+			"name": "/encrypt/decrypt/key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/crypto/encrypt/decrypt/key",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"crypto",
+						"encrypt",
+						"decrypt",
+						"key"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/challenge/encrypt/text For Onsubcribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"challenge\": \"e6ccea18-e1e7-47dd-866d-5c31560929d5\",\r\n    \"client_public_key\": \"MCowBQYDK2VuAyEAmnC5S46mRtybbXcdKiF1Cp2IyUn0Xvh7M0OW564SdT8=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/ondc/challenge/encrypt/text",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ondc",
+						"challenge",
+						"encrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/challenge/decrypt/text For Onsubcribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"challenge\": \"1D0oNIhA3Fd2yT2KUZM6S0HBbKSWOhusZe4EqF78KtxDjVQQPLtQXPXGNjpQCUbH\",\r\n     \"client_private_key\": \"MFECAQEwBQYDK2VuBCIEIFjKx0cvlhIclYDUoC9ppM80gmF6uziEylWIFEMr0IxFgSEAmnC5S46mRtybbXcdKiF1Cp2IyUn0Xvh7M0OW564SdT8=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/ondc/challenge/decrypt/text",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ondc",
+						"challenge",
+						"decrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ondc/public/keys",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/ondc/public/keys",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"ondc",
+						"public",
+						"keys"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ocsp/verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"domain\":\"beta.mystore.in\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/crypto/ocsp/verify",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"crypto",
+						"ocsp",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/test/on_subscribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subscriber_id\": \"https://sit.grab.in/ondc\",\r\n    \"challenge\": \"SftWn9C2TepV6NB4tgBAdvFR4h5aYETnTcxWKXqbLWXKHw8Dq7T8zGP+Df0QGmfq\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://pilot-gateway-1.beckn.nsdl.co.in/option1/test/on_subscribe",
+					"protocol": "https",
+					"host": [
+						"pilot-gateway-1",
+						"beckn",
+						"nsdl",
+						"co",
+						"in"
+					],
+					"path": [
+						"option1",
+						"test",
+						"on_subscribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/crypto/signature/key",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"crypto",
+						"signature",
+						"key"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/generate/onboarding",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"requestData\": \"IND|nic2004:52110\",\r\n   \"clientPrivateKey\":\"94maeacjcwqUG3v1AfYduJvdmUk+upGd563HZFW0vtgnlF0ACQGCPk+zA37A+6j5e/I6akqCaD1W7poDO/8b3A==\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/crypto/signature/generate/onboarding",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"crypto",
+						"signature",
+						"generate",
+						"onboarding"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/verify/onboarding Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestData\": \"cf5f4a29-c977-4605-93b7-954d844d7d08\",\r\n    \"clientPublicKey\": \"Sf8LpnRx3F/1wT1jtcT1yyAWb2JuhfZQLJnvWntDSUE=\",\r\n    \"sign\": \"46nmpDR3I9Tq9hOAoA+c4GlbnFamAQSbM03IZChdiePU9z1nzF9dsCKEKUIR0rf9Px7RyV2h51/AhYeuc5uRDA==\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/crypto/signature/verify/onboarding",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"crypto",
+						"signature",
+						"verify",
+						"onboarding"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/decrypt/text For OnSubscribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"value\": \"xT5OxEfIDqyiza7PlN9zAN3AoGmFFb9bOhr1PysW41izyutVH5AWkDyW0iXm5+EH\",\r\n    \"clientPublicKey\": \"MCowBQYDK2VuAyEAa9Wbpvd9SsrpOZFcynyt/TO3x0Yrqyys4NUGIvyxX2Q=\",\r\n    \"proteanPrivateKey\": \"MFECAQEwBQYDK2VuBCIEIECMbEdE/izp2LJa/EMGklOxXyHdbbucmdrk3u1wTLxjgSEANrCoqTPDM3JzqvQk7NPC4OfrSvtAy/xIVCnUFL1BTkY=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/crypto/decrypt/text",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"crypto",
+						"decrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/encrypt/text For Onsubcribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"value\": \"e6ccea18-e1e7-47dd-866d-5c31560929d5\",\r\n        \"clientPrivateKey\": \"MFECAQEwBQYDK2VuBCIEIGgWS7H3PuQ25Pes5BfwU3VbZ4s1Xgikaw2jbg5oVIdogSEAxb5bn7imc/Kz754WKyaAJHeksjPbHc8SWncDiDyTwUo=\",\r\n       \"proteanPublicKey\": \"MCowBQYDK2VuAyEA6Qzl9/Lgoakd/iQJq7qstVKmCQOA00KdEDQVrtkAByY=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://preprod.registry.ondc.org/crypto/encrypt/text",
+					"protocol": "https",
+					"host": [
+						"preprod",
+						"registry",
+						"ondc",
+						"org"
+					],
+					"path": [
+						"crypto",
+						"encrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

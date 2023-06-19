@@ -1,0 +1,49 @@
+ <ng-container *ngIf="flag">
+
+  <div class="card-header">
+    <div>
+      <h4 class="card-title">{{title}}</h4>
+ 
+    </div>
+    <div class="btn-group btn-group-toggle mt-md-0 mt-1" ngbRadioGroup name="radioBasic" [(ngModel)]="radioModel">
+      <label class="btn btn-outline-primary" ngbButtonLabel rippleEffect (click)="reloadWithVal('DAYS')">
+        <input type="radio" name="radio_options" id="radio_option1" [value]="'DAYS'" ngbButton />
+        <span>Daily</span>
+      </label>
+      <label class="btn btn-outline-primary" ngbButtonLabel rippleEffect (click)="reloadWithVal('WEEKS')">
+        <input type="radio" name="radio_options" id="radio_option1" [value]="'WEEKS'" ngbButton />
+        <span>Weekly</span>
+      </label>
+      <label class="btn btn-outline-primary" ngbButtonLabel rippleEffect (click)="reloadWithVal('MONTHS')">
+        <input type="radio" name="radio_options" id="radio_option2" ngbButton [value]="'MONTHS'" />
+        <span>Monthly</span>
+      </label>
+      <label class="btn btn-outline-primary" ngbButtonLabel rippleEffect (click)="reloadWithVal('YEARS')">
+        <input type="radio" name="radio_options" id="radio_option3" ngbButton [value]="'YEARS'" />
+        <span>Yearly</span>
+      </label>
+    </div>
+    <div class="header-right d-flex align-items-center mt-sm-0 mt-1">
+      <i class="font-medium-2" data-feather="calendar"></i>
+      <ng2-flatpickr [config]="DateRangeOptions"  #ng2FlatPicker (onClose)="reload()"  [formControl]="this.date"></ng2-flatpickr>
+    </div>
+    <div class="header-right d-flex align-items-center mt-sm-0 mt-1">
+      
+<!-- <button type="button" class="btn btn-icon btn-outline-primary" (click)="reload()" rippleEffect>
+  <span [data-feather]="'refresh-cw'"></span></button> -->
+  
+  </div>
+  </div>
+  <div class="card-body">
+     
+    
+ <app-logs-chart-line [lineChart]="lineChart"></app-logs-chart-line>
+  </div>
+
+</ng-container>
+<ng-container *ngIf="!flag">
+  <button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+    <span class="ml-25 align-middle">Loading...</span>
+  </button>
+</ng-container> 

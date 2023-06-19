@@ -1,0 +1,69 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+
+    <section id="statistics-card">
+
+      <div class="row match-height">
+        <div class="col-lg-4 col-12">
+          <div class="row">
+
+ 
+            <div class="col-lg-6 col-6">
+              <div class="card">
+                <div class="card-body pb-50">
+                  <app-logs-div-chart-widget [api]="'lookup'" [seriesTitle]="'Count'" [index]="0"
+                    [title]="'Daily Lookup'" [type]="'DAYS'" [start]="startDay" [end]="end"></app-logs-div-chart-widget>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-6">
+              <div class="card">
+                <div class="card-body pb-50">
+                  <app-logs-div-chart-widget [api]="'lookup'" [seriesTitle]="'Count'" [index]="1"
+                    [title]="'Weekly Lookup'" [type]="'WEEKS'" [start]="startWeek" [end]="end">
+                  </app-logs-div-chart-widget>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-6">
+              <div class="card">
+                <div class="card-body pb-50">
+                  <app-logs-div-chart-widget [api]="'lookup'" [seriesTitle]="'Count'" [index]="0"
+                    [title]="'Monthly Lookup'" [type]="'MONTHS'" [start]="startMonth" [end]="end">
+                  </app-logs-div-chart-widget>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-6">
+              <div class="card">
+                <div class="card-body pb-50">
+                  <app-logs-div-chart-widget [api]="'lookup'" [seriesTitle]="'Count'" [index]="1"
+                    [title]="'Yearly Lookup'" [type]="'YEARS'" [start]="startYear" [end]="end">
+                  </app-logs-div-chart-widget>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8 col-12">
+          <div class="row">
+
+            <div class="col-12">
+              <div class="card">
+                <app-logs-div-chart-line [api]="'lookup'" [seriesTitle]="'Lookup'" [index]="1" [title]="'Lookup'"
+                  [type]="'YEARS'" [start]="startYear" [end]="end" [endTime]="endTime"></app-logs-div-chart-line>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+  </div>
+</div>

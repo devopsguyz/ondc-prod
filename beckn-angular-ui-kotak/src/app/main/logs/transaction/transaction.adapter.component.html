@@ -1,0 +1,553 @@
+<div class="content-wrapper container-xxl p-0 " >
+  <div class="content-body" >
+   
+    <!-- Basic Alerts end --> 
+    <section id="sample-page"  *ngIf="searchFlag">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+              <span class="ml-25 align-middle">Loading...</span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="sample-page">
+
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> {{'TRANSACTION.grid_title_buyer_to_Adapter' |translate}}</h4>
+            </div>
+            <div class="col-md-12 col-12 d-flex justify-content-end">
+              <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                <label class="d-flex align-items-center serach_text_padding"><input type="search" placeholder="Search"
+                    class="form-control ml-25" (keyup)="filterUpdate($event,Constants.Buyer_to_Gateway)" /></label>
+              </div>
+            </div>
+            <!-- ngx-datatable-row-details -->
+            <ngx-datatable [rowClass]="onGetRowClass" #tableRowDetails_buyer_to_Gateway class="bootstrap core-bootstrap"
+              [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5"
+              [rows]="rowsBuyerToGateway" [scrollbarH]="true">
+              <!-- Row Detail Template -->
+              <ngx-datatable-row-detail [rowHeight]="'auto'">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                  <div class="row ml-75">
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_detl' |translate}} :</strong>
+                        <pre class="preclass">
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Transaction_id' |translate}} : </strong> {{ row.Transaction_id }}</span>
+                   
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Buyer_Id' |translate}} : </strong> {{ row.Buyer_id }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Search_received_timestamp' |translate}} : </strong> {{ row.Search_received_timestampp }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Buyer_status' |translate}} : </strong> {{ row.Buyer_status }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}} : </strong> {{ row.Ack_Returned_Timestamp }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Adpter_Status' |translate}} : </strong> {{ row.Gatway_Status }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Error' |translate}} : </strong> {{ row.error }}</span>
+                    </pre>
+                      </span>
+                    </div>
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_col_json' |translate}} :</strong>
+                        <pre class="preclass">{{ row.json}}</pre>
+                      </span>
+
+                    </div>
+
+                  </div>
+                </ng-template>
+              </ngx-datatable-row-detail>
+              <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
+                [canAutoResize]="false">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                  <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded"
+                    [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+                    (click)="rowDetailsToggleExpand(row,tableRowDetails_buyer_to_Gateway)">
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Transaction_id' |translate}}" prop="Transaction_id"
+                [width]="200">
+
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Buyer_Id' |translate}}" prop="Buyer_id" [width]="100">
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Search_received_timestamp' |translate}}"
+                prop="Search_received_timestampp" [width]="130"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Buyer_status' |translate}}" prop="Buyer_status"
+                [width]="80"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}}"
+                prop="Ack_Returned_Timestamp" [width]="130"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Adpter_Status' |translate}}" prop="Gatway_Status"
+                [width]="80"></ngx-datatable-column>
+
+            </ngx-datatable>
+            <!-- ngx-datatable-row-details -->
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="!isTypeSearch" id="sample-page">
+
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> {{'TRANSACTION.grid_title_Adapter_to_Seller' |translate}}</h4>
+            </div>
+            <div class="col-md-12 col-12 d-flex justify-content-end">
+              <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                <label class="d-flex align-items-center serach_text_padding"><input type="search" placeholder="Search"
+                    class="form-control ml-25" (keyup)="filterUpdate($event,Constants.Gateway_to_Seller)" /></label>
+              </div>
+            </div>
+            <!-- ngx-datatable-row-details -->
+            <ngx-datatable #tableRowDetails_Gateway_to_Seller class="bootstrap core-bootstrap"
+              [columnMode]="ColumnMode.force" [rowClass]="onGetRowClass" [headerHeight]="40" [footerHeight]="50"
+              [rowHeight]="'auto'" [limit]="5" [rows]="rowsGatewayToSeller" [scrollbarH]="true">
+              <!-- Row Detail Template -->
+              <ngx-datatable-row-detail [rowHeight]="'auto'">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                  <div class="row ml-75">
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_detl' |translate}} :</strong>
+                        <pre class="preclass">
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Transaction_id' |translate}} : </strong> {{ row.Transaction_id }}</span>
+                   
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Seller_Id' |translate}} : </strong> {{ row.Seller_id }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Search_received_timestamp' |translate}} : </strong> {{ row.Search_received_timestampp }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Adpter_Status' |translate}} : </strong> {{ row.Gatway_Status  }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}} : </strong> {{ row.Ack_Returned_Timestamp }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Seller_Status' |translate}} : </strong> {{ row.Seller_Status}}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Error' |translate}} : </strong> {{ row.error }}</span>
+                    </pre>
+                      </span>
+                    </div>
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_col_json' |translate}} :</strong>
+                        <pre class="preclass">{{ row.json}}</pre>
+                      </span>
+
+                    </div>
+
+                  </div>
+                </ng-template>
+              </ngx-datatable-row-detail>
+              <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
+                [canAutoResize]="false">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+
+                  <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded"
+                    [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+                    (click)="rowDetailsToggleExpand(row,tableRowDetails_Gateway_to_Seller)">
+                  </a>
+
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Transaction_id' |translate}}" prop="Transaction_id"
+                [width]="200">
+
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Seller_Id' |translate}}" prop="Seller_id"
+                [width]="100" [cellClass]="'auto'"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Search_received_timestamp' |translate}}"
+                prop="Search_received_timestampp" [width]="130"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Adpter_Status' |translate}}" prop="Gatway_Status"
+                [width]="80"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}}"
+                prop="Ack_Returned_Timestamp" [width]="130"></ngx-datatable-column>
+
+
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Seller_Status' |translate}}" prop="Seller_Status"
+                [width]="80">
+              </ngx-datatable-column>
+
+            </ngx-datatable>
+            <!-- <div>
+              <p [ngStyle]="{'background-color':'green'}">this is sipmle example</p>
+            </div> -->
+            <!-- ngx-datatable-row-details -->
+
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section *ngIf="!isTypeSearch" id="sample-page">
+
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> {{'TRANSACTION.grid_title_Seller_to_Adapter' |translate}}</h4>
+            </div>
+            <div class="col-md-12 col-12 d-flex justify-content-end">
+              <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                <label class="d-flex align-items-center serach_text_padding"><input type="search" placeholder="Search"
+                    class="form-control ml-25" (keyup)="filterUpdate($event,Constants.Seller_to_Gateway)" /></label>
+              </div>
+            </div>
+            <!-- ngx-datatable-row-details -->
+            <ngx-datatable [rowClass]="onGetRowClass" #tableRowDetails_SellerToGateway class="bootstrap core-bootstrap"
+              [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5"
+              [rows]="rowsSellerToGateway" [scrollbarH]="true">
+              <!-- Row Detail Template -->
+              <ngx-datatable-row-detail [rowHeight]="'auto'">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                  <div class="row ml-75">
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_detl' |translate}} :</strong>
+                        <pre class="preclass">
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Transaction_id' |translate}} : </strong> {{ row.Transaction_id }}</span>
+                   
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Seller_Id' |translate}} : </strong> {{ row.Seller_id }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Search_received_timestamp' |translate}} : </strong> {{ row.Search_received_timestampp }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Adpter_Status' |translate}} : </strong> {{ row.Gatway_Status }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}} : </strong> {{ row.Ack_Returned_Timestamp }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Seller_Status' |translate}} : </strong> {{ row.Seller_Status }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Error' |translate}} : </strong> {{ row.error }}</span>
+                    </pre>
+                      </span>
+                    </div>
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_col_json' |translate}} :</strong>
+                        <pre class="preclass">{{ row.json}}</pre>
+                      </span>
+
+                    </div>
+
+                  </div>
+                </ng-template>
+              </ngx-datatable-row-detail>
+              <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
+                [canAutoResize]="false">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                  <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded"
+                    [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+                    (click)="rowDetailsToggleExpand(row,tableRowDetails_SellerToGateway)">
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Transaction_id' |translate}}" prop="Transaction_id"
+                [width]="200">
+
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Seller_Id' |translate}}" prop="Seller_id"
+                [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Search_received_timestamp' |translate}}"
+                prop="Search_received_timestampp" [width]="130"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Seller_Status' |translate}}" prop="Seller_Status"
+                [width]="80"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}}"
+                prop="Ack_Returned_Timestamp" [width]="130"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Adpter_Status' |translate}}" prop="Gatway_Status"
+                [width]="80"></ngx-datatable-column>
+ 
+
+            </ngx-datatable>
+            <!-- ngx-datatable-row-details -->
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section *ngIf="isTypeSearch" id="AdapterToGateway">
+
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> {{'TRANSACTION.grid_title_Adapter_to_Gateway' |translate}}</h4>
+            </div>
+            <div class="col-md-12 col-12 d-flex justify-content-end">
+              <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                <label class="d-flex align-items-center serach_text_padding"><input type="search" placeholder="Search"
+                    class="form-control ml-25" (keyup)="filterUpdate($event,Constants.Adapter_to_Gateway)" /></label>
+              </div>
+            </div>
+            <!-- ngx-datatable-row-details -->
+            <ngx-datatable [rowClass]="onGetRowClass" #tableRowDetails_AdapterToGateway class="bootstrap core-bootstrap"
+              [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5"
+              [rows]="rowsAdapterToGateway" [scrollbarH]="true">
+
+              <ngx-datatable-row-detail [rowHeight]="'auto'">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                  <div class="row ml-75">
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_detl' |translate}} :</strong>
+                        <pre class="preclass">
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Transaction_id' |translate}} : </strong> {{ row.Transaction_id }}</span>
+                   
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Buyer_Id' |translate}} : </strong> {{ row.Buyer_id }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Search_received_timestamp' |translate}} : </strong> {{ row.Search_received_timestampp }}</span>
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Adpter_Status' |translate}} : </strong> {{ row.Seller_Status }}</span>
+        
+                    
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}} : </strong> {{ row.Ack_Returned_Timestamp }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Gatway_Status' |translate}} : </strong> {{ row.Gatway_Status }}</span>
+                                     
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Error' |translate}} : </strong> {{ row.error }}</span>
+                    </pre>
+                      </span>
+                    </div>
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_col_json' |translate}} :</strong>
+                        <pre class="preclass">{{ row.json}}</pre>
+                      </span>
+
+                    </div>
+
+                  </div>
+                </ng-template>
+              </ngx-datatable-row-detail>
+              <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
+                [canAutoResize]="false">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                  <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded"
+                    [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+                    (click)="rowDetailsToggleExpand(row,tableRowDetails_AdapterToGateway)">
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Transaction_id' |translate}}" prop="Transaction_id"
+                [width]="200">
+
+              </ngx-datatable-column>
+              <!-- <ngx-datatable-column name="{{'TRANSACTION.grid_col_Seller_Id' |translate}}" prop="Seller_id"
+                [width]="100"></ngx-datatable-column> -->
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Buyer_Id' |translate}}" prop="Buyer_id" [width]="100">
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Search_received_timestamp' |translate}}"
+                prop="Search_received_timestampp" [width]="130"></ngx-datatable-column>
+                <ngx-datatable-column name="{{'TRANSACTION.grid_col_Adpter_Status' |translate}}" prop="Seller_Status"
+                [width]="80"></ngx-datatable-column>
+              
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}}"
+                prop="Ack_Returned_Timestamp" [width]="130"></ngx-datatable-column>
+
+                <ngx-datatable-column name="{{'TRANSACTION.grid_col_Gatway_Status' |translate}}" prop="Gatway_Status"
+                [width]="80"></ngx-datatable-column>
+            </ngx-datatable>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section *ngIf="isTypeSearch" id="GatewayToAdapter">
+
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> {{'TRANSACTION.grid_title_Gateway_to_Adapter' |translate}}</h4>
+            </div>
+            <div class="col-md-12 col-12 d-flex justify-content-end">
+              <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                <label class="d-flex align-items-center serach_text_padding"><input type="search" placeholder="Search"
+                    class="form-control ml-25" (keyup)="filterUpdate($event,Constants.Gateway_to_Adapter)" /></label>
+              </div>
+            </div>
+            <!-- ngx-datatable-row-details -->
+            <ngx-datatable [rowClass]="onGetRowClass" #tableRowDetails_GatewayToAdapter class="bootstrap core-bootstrap"
+              [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5"
+              [rows]="rowsGatewayToAdapter" [scrollbarH]="true">
+
+              <ngx-datatable-row-detail [rowHeight]="'auto'">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                  <div class="row ml-75">
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_detl' |translate}} :</strong>
+                        <pre class="preclass">
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Transaction_id' |translate}} : </strong> {{ row.Transaction_id }}</span>
+                                       
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Buyer_Id' |translate}} : </strong> {{ row.Buyer_id }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Search_received_timestamp' |translate}} : </strong> {{ row.Search_received_timestampp }}</span>
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Gatway_Status' |translate}} : </strong> {{ row.Seller_Status }}</span>
+                   
+                     <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}} : </strong> {{ row.Ack_Returned_Timestamp }}</span>
+                      
+                     <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Adpter_Status' |translate}} : </strong> {{ row.Gatway_Status }}</span>
+                    
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Error' |translate}} : </strong> {{ row.error }}</span>
+                    </pre>
+                      </span>
+                    </div>
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_col_json' |translate}} :</strong>
+                        <pre class="preclass">{{ row.json}}</pre>
+                      </span>
+
+                    </div>
+
+                  </div>
+                </ng-template>
+              </ngx-datatable-row-detail>
+              <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
+                [canAutoResize]="false">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                  <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded"
+                    [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+                    (click)="rowDetailsToggleExpand(row,tableRowDetails_GatewayToAdapter)">
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Transaction_id' |translate}}" prop="Transaction_id"
+                [width]="200">
+
+              </ngx-datatable-column>
+              <!-- <ngx-datatable-column name="{{'TRANSACTION.grid_col_Seller_Id' |translate}}" prop="Seller_id"
+                [width]="100"></ngx-datatable-column> -->
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Buyer_Id' |translate}}" prop="Buyer_id" [width]="100">
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Search_received_timestamp' |translate}}"
+                prop="Search_received_timestampp" [width]="130"></ngx-datatable-column>
+                <ngx-datatable-column name="{{'TRANSACTION.grid_col_Gatway_Status' |translate}}" prop="Seller_Status"
+                [width]="80"></ngx-datatable-column>
+
+          
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}}"
+                prop="Ack_Returned_Timestamp" [width]="130"></ngx-datatable-column>
+                <ngx-datatable-column name="{{'TRANSACTION.grid_col_Adpter_Status' |translate}}" prop="Gatway_Status"
+                [width]="80"></ngx-datatable-column>
+            </ngx-datatable>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--
+    <section id="sample-page">
+
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title"> {{'TRANSACTION.grid_title_Gateway_to_Buyer' |translate}}</h4>
+            </div>
+            <div class="col-md-12 col-12 d-flex justify-content-end">
+              <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                <label class="d-flex align-items-center serach_text_padding"><input type="search" placeholder="Search"
+                    class="form-control ml-25" (keyup)="filterUpdate($event,Constants.Gateway_to_Buyer)" /></label>
+              </div>
+            </div>
+            ngx-datatable-row-details
+            <ngx-datatable [rowClass]="onGetRowClass" #tableRowDetails_GatewayToBuyer class="bootstrap core-bootstrap"
+              [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5"
+              [rows]="rowsrowsGatewayToBuyer" [scrollbarH]="true">
+              
+              <ngx-datatable-row-detail [rowHeight]="'auto'">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                  <div class="row ml-75">
+                    <div class="col-6">
+                      <span  ><strong> {{'TRANSACTION.grid_detl' |translate}} :</strong>
+                        <pre class="preclass">
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Transaction_id' |translate}} : </strong> {{ row.Transaction_id }}</span>
+                   
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Seller_Id' |translate}} : </strong> {{ row.Seller_id }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Buyer_Id' |translate}} : </strong> {{ row.Buyer_id }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Search_received_timestamp' |translate}} : </strong> {{ row.Search_received_timestampp }}</span>
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Seller_Status' |translate}} : </strong> {{ row.Gatway_Status }}</span>
+                    
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}} : </strong> {{ row.Ack_Returned_Timestamp }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Gatway_Status' |translate}} : </strong> {{ row.Seller_Status }}</span>
+                      
+                      <span class="spanmarginleft"><strong> {{'TRANSACTION.grid_col_Error' |translate}} : </strong> {{ row.error }}</span>
+                    </pre>
+                      </span>
+                    </div>
+                    <div class="col-6">
+                      <span><strong> {{'TRANSACTION.grid_col_json' |translate}} :</strong>
+                        <pre class="preclass">{{ row.json}}</pre>
+                      </span>
+
+                    </div>
+
+                  </div>
+                </ng-template>
+              </ngx-datatable-row-detail>
+              <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
+                [canAutoResize]="false">
+                <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+                  <a href="javascript:void(0)" [class.datatable-icon-right]="!expanded"
+                    [class.datatable-icon-down]="expanded" title="Expand/Collapse Row"
+                    (click)="rowDetailsToggleExpand(row,tableRowDetails_SellerToGateway)">
+                  </a>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Transaction_id' |translate}}" prop="Transaction_id"
+                [width]="200">
+
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Seller_Id' |translate}}" prop="Seller_id"
+                [width]="100"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Buyer_Id' |translate}}" prop="Buyer_id" [width]="100">
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Search_received_timestamp' |translate}}"
+                prop="Search_received_timestampp" [width]="130"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Seller_Status' |translate}}" prop="Gatway_Status"
+                [width]="80"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Ack_returned_timestamp' |translate}}"
+                prop="Ack_Returned_Timestamp" [width]="130"></ngx-datatable-column>
+              <ngx-datatable-column name="{{'TRANSACTION.grid_col_Gatway_Status' |translate}}" prop="Seller_Status"
+                [width]="80"></ngx-datatable-column>
+
+            </ngx-datatable>
+            
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+  -->
+
+  </div>
+</div>

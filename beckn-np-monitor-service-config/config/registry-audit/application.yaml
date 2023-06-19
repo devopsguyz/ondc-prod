@@ -1,0 +1,95 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://75.119.158.145:8078/auth/realms/ONDC/protocol/openid-connect/certs
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: 'false'
+        jdbc:
+          batch_size: '10'
+          lob:
+            non_contextual_creation: 'true'
+        format_sql: 'true'
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        connection:
+          isolation: '2'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'false'
+    open-in-view: 'false'
+  liquibase:
+    change-log: classpath:db/db.changelog-master.xml
+    enabled: 'false'
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+    platform: postgresql
+  profiles:
+    active: '@spring.profiles.active@'
+  data:
+    rest:
+      max-page-size: '100'
+page:
+  size:
+    transation: '1000'
+    lookup: "100\t\t\t\t\t\t\t"
+  web:
+    size:
+      transation: '100'
+cache-dashboard:
+  timetolive: '2000'
+  entrycount: '10000'
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+com:
+  nsdl:
+    logs:
+      monitor:
+        days: '30'
+        weeks: '4'
+        months: '6'
+        years: '2'
+cron:
+  dashboard:
+    insert:
+      buyer: 0 1 1 * * *
+      seller: 0 1 1 * * *
+    analysis: 0 0/15 * * * *
+  summary:
+    report: 0 1 * * * *
+logging:
+  level:
+    org:
+      springframework:
+        security: TRACE
+      hibernate:
+        type: info
+        stat: info
+    root: 'OFF'
+  file:
+    name: ./logs/server-api-gateway.log
+  pattern:
+    console: '''%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } --- [%15.15t] %-40.40logger{39}
+      : %m%n%wEx'''
+server:
+  port: '8001'
+  servlet:
+    context-path: /logs-monitoring-api/audit
+debug: 'true'
+common:
+  threads: '10000'
+summary:
+  report:
+    dir: d://zipfiles
+    transaction:
+      cnt: '100'
+db:
+  name:
+    server: 'apiAuditMumbai: Mumbai,apiAuditDehli: Dehli,apiAuditArchvlMumbai: Mumbai
+      Archival,apiAuditArchvlDehli: Dehli Archival,apiAuditArchvlTmpMumbai: Mumbai
+      Archival Temp,apiAuditArchvlTmpDehli: Dehli Archival Temp'

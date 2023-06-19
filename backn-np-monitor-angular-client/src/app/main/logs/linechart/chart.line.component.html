@@ -1,0 +1,20 @@
+ 
+  <div id="lineChart" #lineChartRef>
+     
+      <apx-chart [chart]="{
+                        height: 270,
+                        width:  lineChartRef.offsetWidth, 
+                        toolbar: { show: false },
+                        type: 'line',
+                        dropShadow: {
+                          enabled: true,
+                          top: 20,
+                          left: 2,
+                          blur: 6,
+                          opacity: 0.2
+                        }
+                      }" [stroke]="lineChart.stroke" [grid]="lineChart.grid" [legend]="lineChart.legend"
+        [colors]="lineChart.colors" [fill]="lineChart.fill" [xaxis]="lineChart.xaxis"
+         [yaxis]="lineChart.yaxis"
+        [tooltip]="lineChart.tooltip" [series]="lineChart.series"></apx-chart>  
+   

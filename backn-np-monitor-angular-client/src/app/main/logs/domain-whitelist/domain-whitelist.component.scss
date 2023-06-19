@@ -1,0 +1,49 @@
+@import '@core/scss/angular/libs/flatpickr.component.scss';
+@import '@core/scss/angular/libs/select.component.scss';
+@import '@core/scss/angular/libs/datatables.component.scss';
+@import '@core/scss/angular/libs/toastr.component.scss';
+@import '~ngx-toastr/toastr';
+
+.datatable-scroll {
+  width: auto !important;
+}
+
+.search-btn{
+    padding-top: 23px;
+}
+.serach_text_padding{
+  padding-bottom: 10px;
+}
+.datatable-body-cell-label {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  
+}
+.btn_add_padding{
+  padding: 12px;
+  width: 97px; 
+  height: 37px;
+  border-bottom: -198px;
+}
+
+.custom-checkbox-div{
+ padding-right: 9px;
+ padding-right: 30px;
+}
+.custom-checkbox{
+  width: 22px;
+  height: 22px;
+  left: 14px;
+}
+button{
+  padding: 10px;
+  margin: 0px;
+  background-color: red;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 0px;
+}
+
+
+ 

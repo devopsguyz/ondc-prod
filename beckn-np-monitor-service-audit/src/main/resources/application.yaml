@@ -1,0 +1,67 @@
+spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://75.119.158.145:8078/auth/realms/ONDC/protocol/openid-connect/certs
+server.servlet.context-path=/logs-monitoring-api/audit
+
+cache-dashboard.entrycount=10000
+cache-dashboard.timetolive=2000
+common.threads=10000
+
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL95Dialect
+spring.datasource.initialization-mode=always
+spring.datasource.platform=postgresql
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+spring.jpa.open-in-view=false
+debug=true
+logging.level.org.springframework.security=TRACE
+spring.jpa.hibernate.ddl-auto=update
+logging.file.name=./logs/server-api-gateway.log
+logging.pattern.console='%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID:- } --- [%15.15t] %-40.40logger{39} : %m%n%wEx'
+
+#Turn Statistics on
+spring.jpa.properties.hibernate.generate_statistics=false
+logging.level.org.hibernate.stat=info
+
+# Show all queries
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.format_sql=true
+logging.level.org.hibernate.type=info
+logging.level.root=OFF
+spring.jpa.properties.hibernate.connection.isolation=2
+ 
+
+
+# Performance
+spring.jpa.properties.hibernate.jdbc.batch_size=10
+spring.data.rest.max-page-size=100
+
+#Liquibase 
+spring.liquibase.change-log=classpath:db/db.changelog-master.xml
+spring.liquibase.enabled=false
+server.port: 8001
+com.nsdl.logs.monitor.years=2
+com.nsdl.logs.monitor.months=6
+com.nsdl.logs.monitor.weeks=4
+com.nsdl.logs.monitor.days=30
+spring.profiles.active=@spring.profiles.active@
+
+#Page size for transation
+page.size.transation=1000
+page.web.size.transation=100
+page.size.lookup=100							
+# Every 10 minutes
+cron.dashboard.analysis=0 0/15 * * * *
+
+
+summary.report.transaction.cnt=100
+#summary.report.dir=src\\main\\resources\\summary\\report\\
+summary.report.dir=d://zipfiles
+cron.summary.report=0 1 * * * *
+cron.dashboard.insert.seller=0 1 1 * * *
+cron.dashboard.insert.buyer=0 1 1 * * *
+#cron.summary.report=* */1 * * * *
+
+
+jasypt.encryptor.iv-generator-classname=org.jasypt.iv.NoIvGenerator
+jasypt.encryptor.algorithm=PBEWithMD5AndDES
+db.name.server=apiAuditMumbai: Mumbai,apiAuditDehli: Dehli,apiAuditArchvlMumbai: Mumbai Archival,apiAuditArchvlDehli: Dehli Archival,apiAuditArchvlTmpMumbai: Mumbai Archival Temp,apiAuditArchvlTmpDehli: Dehli Archival Temp
+
+spring.datasource.driver-class-name=org.postgresql.Driver

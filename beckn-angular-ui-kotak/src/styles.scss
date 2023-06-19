@@ -1,0 +1,25 @@
+@import '@core/scss/core.scss';
+@import './assets/scss/styles';
+
+
+.h6, h6 {
+    font-size: 0.8rem;
+}
+
+
+.color-transaction-row-green{
+    background:#DFF2BF !important;
+  }
+ .color-transaction-row-red{
+    background:#FFCCCC !important;
+  }
+
+
+  .form-control {
+    width: calc(100% + 7px) !important;
+  }
+
+  .apexcharts-text tspan {
+    font-family: inherit;
+    font-weight: 600;
+}

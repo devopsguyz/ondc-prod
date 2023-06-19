@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "5b277b7f-08e1-4035-8ea2-e3e90853c58a",
+		"name": "Crypto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/hello",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestData\": \"{\\\"context\\\":{\\\"country\\\":\\\"IND\\\",\\\"domain\\\":\\\"test-BPP-Mobility\\\",\\\"transaction_id\\\":\\\"3ad6ff68-2427-4e18-8f15-670020a84797\\\",\\\"action\\\":\\\"search\\\",\\\"message_id\\\":\\\"d951b9cc-4ced-4cb4-a0bd-ac8f7dc40a73\\\",\\\"city\\\":\\\"Kochi\\\",\\\"bap_uri\\\":\\\"https://api.beckn.juspay.in/bap/cab/v1\\\",\\\"timestamp\\\":\\\"2022-03-17T08:45:08.756463024Z\\\",\\\"core_version\\\":\\\"0.9.3\\\",\\\"bap_id\\\":\\\"api.beckn.juspay.in/bap/cab/v1\\\"},\\\"message\\\":{\\\"intent\\\":{\\\"fulfillment\\\":{\\\"start\\\":{\\\"time\\\":{\\\"timestamp\\\":\\\"2022-03-17T08:45:08.731307978Z\\\"},\\\"location\\\":{\\\"address\\\":{\\\"area\\\":\\\"Edappally \\\",\\\"state\\\":\\\"Kerala \\\",\\\"country\\\":\\\"India \\\",\\\"building\\\":\\\"Edappally Junction \\\",\\\"door\\\":\\\"LuLu Mall Old NH 47\\\",\\\"street\\\":\\\"Nethaji Nagar\\\",\\\"city\\\":\\\"Kochi \\\",\\\"area_code\\\":\\\"\\\"},\\\"gps\\\":\\\"10.0265216, 76.3085945\\\"}},\\\"distance\\\":\\\"17567.4880000000011932570487260\\\",\\\"end\\\":{\\\"location\\\":{\\\"address\\\":{\\\"area\\\":\\\" \\\",\\\"state\\\":\\\"Kerala \\\",\\\"country\\\":\\\"India \\\",\\\"building\\\":\\\" \\\",\\\"door\\\":\\\"\\\",\\\"street\\\":\\\"\\\",\\\"city\\\":\\\"Kochi \\\",\\\"area_code\\\":\\\"\\\"},\\\"gps\\\":\\\"9.9312328, 76.26730409999999\\\"}}}}}}\",\r\n    \"dbPublicKey\": \"K0el1kYfJI222a8Zja9jOsU68zU+zqT6/AiTobEl66k=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/signature/key",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"signature",
+						"key"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/generate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestData\": \"67d8b568-5b0d-4a34-aac3-8f761c22f541\",\r\n   \"clientPrivateKey\":\"KlWg/87B00klyQrW7o3gZyi8QDeawWhNYaMbGln29/s=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/signature/generate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"signature",
+						"generate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/generate/onboarding",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestData\": \"67d8b568-5b0d-4a34-aac3-8f761c22f541\",\r\n   \"clientPrivateKey\":\"GY0l5qgBXSEwdIlcYu0TFUh3vRYwBs0leccaG+8VVOg=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/signature/generate/onboarding",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"signature",
+						"generate",
+						"onboarding"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestData\": \"6db65041-de15-484a-ba74-1086c2ab15c5\",\r\n    \"clientPublicKey\": \"L1pUDAxvqMvuLn34BrB9rBeLw14jMfhXXUFY3p9x0+Q=\",\r\n    \"sign\":  \"Signature keyId=\\\"nsdl.co.in.ba|nsdl_bap1|ed25519\\\",algorithm=\\\"ed25519\\\", created=\\\"1650101706\\\", expires=\\\"1650161706\\\", headers=\\\"(created) (expires) digest\\\", signature=\\\"6xyb725fP4yF5wT+jeN8vOWzGv4TI0wHk0IJhey6/1ncrF/ZRywggEAvZygxkmWgi0zFc1tIHx3mHIwRkviUDg==\\\"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/signature/verify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"signature",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/signature/verify/onboarding",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestData\": \"09bd1b2a-c636-4fe3-bcc3-dcda6362c55\",\r\n    \"clientPublicKey\": \"L1pUDAxvqMvuLn34BrB9rBeLw14jMfhXXUFY3p9x0+Q=\",\r\n    \"sign\": \"8B5DLTKkm/0dP+xXZ/1RlbSEgbg+4fgU1kn+aVFJasR2OnFLmizJmFSswcDl1IBRmyrNPfTZZVbl++biljrqAg==\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/signature/verify/onboarding",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"signature",
+						"verify",
+						"onboarding"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/encrypt/decrypt/key",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9001/encrypt/decrypt/key",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"encrypt",
+						"decrypt",
+						"key"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/encrypt/text",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": \"67d8b568-5b0d-4a34-aac3-8f761c22f541\",\r\n    \"clientPrivateKey\": \"MFECAQEwBQYDK2VuBCIEIBCERTCvWIEYuontGk5FFl5oUrH/33bA/KulLErqGstlgSEA+XpYc09S8X8mkgNTlf6nlPRbL46TCwEXlAIkjP5tRh4=\",\r\n    \"proteanPublicKey\": \"MCowBQYDK2VuAyEALtPj74XkIrkyxTqyssjtYJ3KRND5FnzK5MDrwlK3kC8=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/encrypt/text",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"encrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/encrypt/text For Onsubcribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"value\": \"e6ccea18-e1e7-47dd-866d-5c31560929d5\",\r\n        \"clientPrivateKey\": \"MFECAQEwBQYDK2VuBCIEIAj5U1DVAX5eGI1jIIcjmzWgPQlIg/T1Q6A3pZ0AIWp6gSEAJGnKRTAEcSvpgD0mw9gBHv94E3w8sTtmPlszuXIEAF0=\",\r\n       \"proteanPublicKey\": \"MCowBQYDK2VuAyEASfWOME2kQQ75i5iMHx0ZodBn0P9UTHcOkeczDmeOVkU=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/encrypt/text",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"encrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/decrypt/text",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": \"cNK5xU6tKn2VJ47AKL6cQQC0gnbpnByqvEXboCJPnbA=\",\r\n    \"clientPublicKey\": \"MCowBQYDK2VuAyEASfWOME2kQQ75i5iMHx0ZodBn0P9UTHcOkeczDmeOVkU=\",\r\n    \"proteanPrivateKey\": \"MFECAQEwBQYDK2VuBCIEIAj5U1DVAX5eGI1jIIcjmzWgPQlIg/T1Q6A3pZ0AIWp6gSEAJGnKRTAEcSvpgD0mw9gBHv94E3w8sTtmPlszuXIEAF0=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/decrypt/text",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"decrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/decrypt/text For OnSubscribe",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"value\": \"iJO27v42E/7YfhuKkWzz10zdzNDzoEjQ4CTjur4/DlMVESfStHYFPQOXlNOaEwLV\",\r\n    \"clientPublicKey\": \"MCowBQYDK2VuAyEALtPj74XkIrkyxTqyssjtYJ3KRND5FnzK5MDrwlK3kC8=\",\r\n    \"proteanPrivateKey\": \"MFECAQEwBQYDK2VuBCIEIChY69PwPeovw1zAh7TRU+E40LIEykBsbIBp3CanVvRegSEASfWOME2kQQ75i5iMHx0ZodBn0P9UTHcOkeczDmeOVkU=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/decrypt/text",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"decrypt",
+						"text"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ocsp/verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"domain\": \"fossgentechnologies.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/ocsp/verify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"ocsp",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

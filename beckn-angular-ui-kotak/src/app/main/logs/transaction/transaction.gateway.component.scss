@@ -1,0 +1,35 @@
+@import '@core/scss/angular/libs/flatpickr.component.scss';
+@import '@core/scss/angular/libs/select.component.scss';
+@import '@core/scss/angular/libs/datatables.component.scss';
+@import '@core/scss/angular/libs/toastr.component.scss';
+
+.datatable-scroll {
+  width: auto !important;
+}
+
+.search-btn{
+    padding-top: 23px;
+}
+.serach_text_padding{
+  padding-bottom: 10px;
+}
+.datatable-body-cell-label {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  
+}
+
+.preclass{
+ border: solid rgb(196, 194, 194);
+    background-color: rgb(255 255 255 / 50%) !important;
+    margin-right: 10px;
+    padding: 5px;
+    width: 42vw;
+    height: 70vh;
+
+}
+.spanmarginleft{
+  margin-left: -66px;
+}
+ 

@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "spring.datasource.API_AUDIT_ARCHVL_TMP.mumbai.url",
+  "type": "java.lang.String",
+  "description": "A description for 'spring.datasource.API_AUDIT_ARCHVL_TMP.mumbai.url'"
+}]}

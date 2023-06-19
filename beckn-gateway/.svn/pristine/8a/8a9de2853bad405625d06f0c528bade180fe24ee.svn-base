@@ -1,0 +1,36 @@
+[
+	{
+		"br_id": 1,
+		"subscriber_id": "mock_bpp1",
+		"subscriber_url": "http://localhost:8089/seller",
+		"type": "BPP",
+		"domain": "Mobility",
+		"city": "Kochi",
+		"country": "IND",
+		"signing_public_key": "K0el1kYfJI222a8Zja9jOsU68zU+zqT6/AiTobEl66k=",
+		"encr_public_key": "K0el1kYfJI222a8Zja9jOsU68zU+zqT6/AiTobEl66k=",
+		"valid_from": "2021-11-20T16:00:48.072Z",
+		"valid_until": "2024-11-26T16:00:48.072Z",
+		"status": "SUBSCRIBED",
+		"created": "2021-11-10T20:15:44.015Z",
+		"updated": "2021-11-10T20:50:00.050Z",
+		"ukId": "bpp_one"
+	},
+	{
+		"br_id": 2,
+		"subscriber_id": "mock_bpp2",
+		"subscriber_url": "http://localhost:8089/seller",
+		"type": "BPP",
+		"domain": "Mobility",
+		"city": "Kochi",
+		"country": "IND",
+		"signing_public_key": "K0el1kYfJI222a8Zja9jOsU68zU+zqT6/AiTobEl66k=",
+		"encr_public_key": "K0el1kYfJI222a8Zja9jOsU68zU+zqT6/AiTobEl66k=",
+		"valid_from": "2021-11-20T16:00:48.072Z",
+		"valid_until": "2024-11-26T16:00:48.072Z",
+		"status": "SUBSCRIBED",
+		"created": "2021-11-10T20:15:44.015Z",
+		"updated": "2021-11-10T20:50:00.050Z",
+		"ukId": "bpp_two"
+	}
+]

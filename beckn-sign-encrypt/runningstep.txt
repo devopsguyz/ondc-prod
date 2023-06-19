@@ -1,0 +1,7 @@
+Step
+
+1) Extract ProteanEgovUtility.rar
+2) set java 11 as Runtime version
+3) open cmmmond promt
+4) Goto ProteanEgovUtility/targer folder 
+5) Run "java -jar ProteanEgovUtility-0.0.1-SNAPSHOT.jar"

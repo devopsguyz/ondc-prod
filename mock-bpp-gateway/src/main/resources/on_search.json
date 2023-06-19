@@ -1,0 +1,354 @@
+{
+	"context": {
+		"domain": "nic2004:52110",
+		"country": "IND",
+		"city": "std:080",
+		"action": "on_search",
+		"bap_id": "",
+		"bap_uri": "",
+		"bpp_id": "",
+		"bpp_uri": "",
+		"transaction_id": "",
+		"message_id": "",
+		"timestamp": "",
+		"key": "string",
+		"ttl": "string",
+		"core_version": "0.9.2"
+	},
+	"message": {
+		"catalog": {
+			"bpp/descriptor": {
+				"name": "Mock BPP"
+			},
+			"bpp/providers": [
+				{
+					"id": "mega-mall",
+					"descriptor": {
+						"name": "Mega Mall Mumbai"
+					},
+					"locations": [
+						{
+							"id": "mumbai-4th-block-location",
+							"gps": "12.9349377,77.6055586"
+						}
+					],
+					"categories": [
+						{
+							"id": "fresh_fruits",
+							"descriptor": {
+								"name": "Fresh Fruits"
+							}
+						},
+						{
+							"id": "beverages",
+							"descriptor": {
+								"name": "Beverages"
+							}
+						}
+					],
+					"items": [
+						{
+							"id": "item_1",
+							"descriptor": {
+								"name": "Green Apples Organic",
+								"images": [
+									"./assets/images/apple_1.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "170"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_2",
+							"descriptor": {
+								"name": "Red Apples",
+								"images": [
+									"./assets/images/apple_2.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "90"
+							},
+							"related": true
+						},
+						{
+							"id": "item_3",
+							"descriptor": {
+								"name": "Kashmiri Apple Permium",
+								"images": [
+									"./assets/images/apple_3.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "120"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_4",
+							"descriptor": {
+								"name": "Fresh Australia Apple",
+								"images": [
+									"./assets/images/apple_4.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "180"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_5",
+							"descriptor": {
+								"name": "Pure Apple Juice Iceland",
+								"images": [
+									"./assets/images/apple_juice_1.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "110"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_6",
+							"descriptor": {
+								"name": "Real Fresh Apple Juice",
+								"images": [
+									"./assets/images/apple_juice_2.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "100"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_8",
+							"descriptor": {
+								"name": "Fresh Oranges",
+								"images": [
+									"./assets/images/orange_1.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "80"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_9",
+							"descriptor": {
+								"name": "Fresh Nagpur Orange",
+								"images": [
+									"./assets/images/orange_2.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "85"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_10",
+							"descriptor": {
+								"name": "Fresh Orange Juice",
+								"images": [
+									"./assets/images/orange_juice_1.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "140"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_11",
+							"descriptor": {
+								"name": "Tropicana Orange Juice",
+								"images": [
+									"./assets/images/orange_juice_2.jpg"
+								]
+							},
+							"category_id": "fresh_fruits",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "160"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_12",
+							"descriptor": {
+								"name": "Samsung Galaxy S21",
+								"images": [
+									"./assets/images/samsung_s_21.jpg"
+								]
+							},
+							"category_id": "mobile",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "57700"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_13",
+							"descriptor": {
+								"name": "Samsung Galaxy A52",
+								"images": [
+									"./assets/images/samsung_a_52.jpg"
+								]
+							},
+							"category_id": "mobile",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "25600"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_14",
+							"descriptor": {
+								"name": "iPhone 13",
+								"images": [
+									"./assets/images/iphone_13.jpg"
+								]
+							},
+							"category_id": "mobile",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "85700"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_15",
+							"descriptor": {
+								"name": "iPhone 13 Mini",
+								"images": [
+									"./assets/images/iphone_mini_13.jpg"
+								]
+							},
+							"category_id": "mobile",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "65700"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_16",
+							"descriptor": {
+								"name": "One Plus 11 Pro",
+								"images": [
+									"./assets/images/oneplus_pro_11.jpg"
+								]
+							},
+							"category_id": "mobile",
+							"location_id": "mumbai-4th-block-location",
+							"price": {
+								"currency": "INR",
+								"value": "45200"
+							},
+							"matched": true
+						}
+					]
+				},
+				{
+					"id": "mega-mall",
+					"descriptor": {
+						"name": "Mega Mall"
+					},
+					"locations": [
+						{
+							"id": "mega-mall-location",
+							"gps": "12.9349377,77.6055586"
+						}
+					],
+					"categories": [
+						{
+							"id": "fresh-food",
+							"descriptor": {
+								"name": "Fresh food"
+							}
+						}
+					],
+					"items": [
+						{
+							"id": "item_2_1",
+							"descriptor": {
+								"name": "Dell Inspiron",
+								"images": [
+									"./assets/images/dell_inspiron.jpg"
+								]
+							},
+							"category_id": "laptop",
+							"location_id": "mega-mall-location",
+							"price": {
+								"currency": "INR",
+								"value": "90000"
+							},
+							"matched": true
+						},
+						{
+							"id": "item_2_2",
+							"descriptor": {
+								"name": "Dell Latitude",
+								"images": [
+									"./assets/images/dell_latitude.jpg"
+								]
+							},
+							"category_id": "laptop",
+							"location_id": "mega-mall-location",
+							"price": {
+								"currency": "INR",
+								"value": "63000"
+							},
+							"matched": true
+						}
+					]
+				}
+			],
+			"bpp/fulfillments": [
+				{
+					"type": "home-delivery"
+				}
+			]
+		}
+	}
+}

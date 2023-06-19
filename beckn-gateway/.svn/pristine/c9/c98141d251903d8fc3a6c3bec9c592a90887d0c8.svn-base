@@ -1,0 +1,34 @@
+[
+	{
+		"subscriber_id": "nsdl.co.in",
+		"keyid": "",
+		"signing": {
+			"certificate_used": false,
+			"certificate_type": "pkcs12",
+			"certificate_alias": "tsa",
+			"certificate_path": "../network-participant.p12",
+			"certificate_pwd": "bnNkbDEy",
+			"private_key": "R33D4kpv9XlvHEnHPSINfdePagxRCLNw0yaqZ9BkJLg="
+		},
+		"api": [
+			{
+				"name": "search",
+				"http_entity_endpoint": "",
+				"http_timeout": 8000,
+				"http_retry_count": 0,
+				"header_validity": 600000,
+				"header_authentication": true,
+				"set_authorization_header": true
+			},
+			{
+				"name": "lookup",
+				"http_entity_endpoint": "https://registry.ondc.org/lookup",
+				"http_timeout": 9000,
+				"http_retry_count": 0,
+				"header_validity": 600000,
+				"header_authentication": true,
+				"set_authorization_header": false
+			}
+		]
+	}
+]

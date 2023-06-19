@@ -1,0 +1,12 @@
+<ng-container *ngIf="flag">
+<h6>{{title}}</h6>
+<h2 class="font-weight-bolder mb-1">{{statisticsLine.series[0].data[statisticsLine.series[0].data.length-1]}}</h2>
+<app-logs-chart-widget [statisticsLine]="statisticsLine"></app-logs-chart-widget>
+ 
+</ng-container>
+<ng-container *ngIf="!flag">
+<button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+  <span class="ml-25 align-middle">Loading...</span>
+</button>
+</ng-container>

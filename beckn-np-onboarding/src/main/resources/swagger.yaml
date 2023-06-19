@@ -1,0 +1,921 @@
+swagger: '2.0'
+info:
+  description:  ONDC Network Participant Onboarding APIs
+  version: 0.0.6
+  title: APIs to be used by ONDC Network Participant 
+  # put the contact info for your development or API team
+  contact:
+    email: team@ondc.org
+
+  license:
+    name: TBD
+    url: https://ondc.org
+
+# tags are used for organizing operations
+tags:
+- name: developers
+  description: Operations available to regular developers
+
+paths:
+  /signature/key:
+    post:
+      tags:
+      - Creating test encryption keys and signing keys and also encryption and signing API
+      summary: "Generate signing keys"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      operationId: key
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/KeyData"
+  
+  /encrypt/decrypt/key:
+    post:
+      tags:
+      - Creating test encryption keys and signing keys and also encryption and signing API
+      summary: "Generate encryption/decryption keys"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      operationId: keyEncDecrypt
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: "#/definitions/KeyData"          
+  
+  /signature/generate:
+    post:
+      tags:
+      - Creating test encryption keys and signing keys and also encryption and signing API
+      summary: "Generate signature"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      operationId: signature
+      parameters:
+      - in: body
+        name: Generate signature Request 
+        description: Generate signature for requested data
+        schema:
+          $ref: '#/definitions/RequestSigData'
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+            example : signature
+      
+
+  /signature/verify:
+    post:
+      tags:
+      - Creating test encryption keys and signing keys and also encryption and signing API
+      summary: "Signature Verify"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      operationId: signatureVerify
+      parameters:
+      - in: body
+        name: Signature Key Verification Request 
+        description: Verifies whether the given Signature is Valid
+        schema:
+          $ref: '#/definitions/RequestData'
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+            example : Signature is valid
+        "500":
+          description: OK
+          schema:
+            type: string
+            example : Signature is not valid
+  
+  /signature/generate/onboarding:
+    post:
+      tags:
+      - Creating test encryption keys and signing keys and also encryption and signing API
+      summary: "Generate Signature"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      operationId: signaturePlan
+      parameters:
+      - in: body
+        name: Generate signature Request 
+        description: Generate signature for requested data
+        schema:
+          $ref: '#/definitions/RequestSigData'
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+            example: signature
+
+          
+  /signature/verify/onboarding:
+    post:
+      tags:
+      - Creating test encryption keys and signing keys and also encryption and signing API
+      summary: "Verify Signature"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      operationId: signatureVerifyPlan
+      parameters:
+      - in: body
+        name: Signature Key Verification Request 
+        description: Verifies whether the given Signature is Valid
+        schema:
+          $ref: '#/definitions/RequestData'
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+            example : Signature is valid
+        "500":
+          description: OK
+          schema:
+            type: string
+            example : Signature is not valid
+            
+    
+    
+  /ocsp/verify:
+    post:
+      tags:
+      - Creating test encryption keys and signing keys and also encryption and signing API
+      summary: "Verify SSL URL using OCSP"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      operationId: ocspVerify
+      parameters:
+      - in: body
+        name: SSL URL Request 
+        description: Verifies whether the given URL SSL is Valid
+        schema:
+          $ref: '#/definitions/Web'
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+            example: Valid | Invalid
+  
+  /encrypt/text:
+    post:
+      tags:
+      - Creating test encryption keys and signing keys and also encryption and signing API
+      summary: "Encrypt Text"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      operationId: encryptText
+      parameters:
+      - in: body
+        name: Encryption Request 
+        description: Encrypt the given Text
+        schema:
+          $ref: '#/definitions/RequestEncryptData'
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+            example: Encrypt Text
+          
+  
+
+  
+  /decrypt/text:
+    post:
+      tags:
+      - Creating test encryption keys and signing keys and also encryption and signing API
+      summary: "Decrypt encrypted Text"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      operationId: decryptText
+      parameters:
+      - in: body
+        name: Decryption Request 
+        description: Verifies whether the given Signature is Valid
+        schema:
+          $ref: '#/definitions/RequestDecryptData'
+        required: true
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+            example: Decrypt Text
+          
+  /ondc/verifyParticipant/verifyD/init:
+    post:
+      summary: "Generate Verification and Ack Code for Website Ownership Verification"
+      description: ""
+      operationId: "genVerCode"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Website URL \"Domain\"  that needs to be added for Network Participant should be verified. Gateway will verify provided \"subscriber_url\" name that matches SSL certificate domain name. It should have valid SSL certificate and HTTPS should be enabled on the website that needs to be verified. One of the sites to check OCSP is https://certificatetools.com/ocsp-checker; it can be used to verify OCSP (Online Certificate Status Protocol)"
+        required: true
+        schema:
+          $ref: "#/definitions/ReqDinit"
+      responses:
+        "200":
+          description: "Request received"
+          schema:
+            $ref: "#/definitions/Response"
+        "500":
+          description: "Server Side Error. Call Helpdesk for details."
+      tags:
+      - Onboarding of new network participant - buyerApp or sellerApp
+  /ondc/verifyParticipant/verifyD/verify:
+    post:
+      summary: "Initiate Verification of the website"
+      description: "Once Network Partcipant places 'ondc-site-verification.html' in the root folder of domain to be verified, Network Participant should initiate this API with the valid 'ackCode' received"
+      operationId: "Verify Website"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Website URL Domain that needs to be added to be verified"
+        required: true
+        schema:
+          $ref: "#/definitions/ReqDverify"
+      responses:
+        "200":
+          description: "Request received"
+          schema:
+            $ref: "#/definitions/Response"
+            
+        "500":
+          description: "Server Side Error. Call Helpdesk for details."
+      tags:
+          - Onboarding of new network participant - buyerApp or sellerApp
+  /ondc/verifyParticipant/verifyK/init:
+    post:
+      summary: Verify signing key of Network Participant that will be used for Signing
+      operationId: VerSigKey
+      description: "Verify Configured Signing and Encryption Key. "
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Signature Key Verification Request 
+        description: Verifies whether the given Signature is Valid
+        schema:
+          $ref: '#/definitions/ReqKinit'
+      responses:
+        "200":
+          description: "Request received"
+          schema:
+            $ref: "#/definitions/Response"
+        "500":
+          description: "Server Side Error. Call Helpdesk for details."
+      tags:
+        - Onboarding of new network participant - buyerApp or sellerApp
+        - Key rotation of network participant - buyerApp or sellerApp
+  /ondc/subscribe:
+    post:
+      summary: The network participant will trigger the subscribe call to the registry to register its public keys.
+      description: The network participant will trigger the subscribe call to the registry to register its public keys.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Subscribe request body
+        schema:
+          $ref: "#/definitions/ReqSubscribe"  
+      responses:
+        "200":
+          description: Registration status returned
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                example: INITIATED
+                description: "Possible values : INITIATED, UNDER_SUBSCRIPTION, SUBSCRIBED, INVALID_SSL, UNSUBSCRIBED"
+        "500":
+          description: "Server Side Error. Call Helpdesk for details."
+      tags:
+        - Key rotation of network participant - buyerApp or sellerApp
+  /networkParticipant/on_subscribe:
+    post:
+      summary: verify network participants encryption key. To be hosted by network participant
+      description: In this API, the Registry generates a random string, encrypts it with the subscriber’s old encryption public key and sends it to the subscriber’s callback URL. The subscriber then decrypts the string using its old encryption private key and sends back the decrypted value to the registry. If the decrypted value is the same as the sent value, the subscriber gets added to the registry with a status = "SUBSCRIBED"‘
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: On Subscribe request body
+        schema:
+          type: object
+          properties:
+            subscriber_id:
+              type: string
+              description: A unique ID describing a subscriber on a network.
+              example: ondc.org
+            challenge:
+              type: string
+              description: String encrypted using the subscriber’s old encryption public key
+              example: encrypted_challenge_string
+      responses:
+        "200":
+          description: Successful subscription
+          schema:
+            type: object
+            properties:
+              answer: 
+                type: string
+                description: Decrypted value
+                example: decrypted_challange_string
+      tags:
+          - Key rotation of network participant - buyerApp or sellerApp
+        
+  /ondc/lookup:
+    post:
+      summary: Get public keys of network participants
+      description: The network participant will trigger the lookup call to the registry to fetch its public keys.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Lookup request body
+        schema:
+          $ref: "#/definitions/ReqLookup"  
+      responses:
+        "200":
+          description: Lookup received
+          schema:
+            type: object
+            properties:
+              subscriber_id:
+                type: string
+                format: string
+                description: A unique ID describing a subscriber on a network.
+                example: "https://sit.grab.in/ondc"
+              country:
+                type: string
+                format: string
+                description: Country code
+                example: "IND"
+              city:
+                type: string
+                format: string
+                description: City code
+                example: "std:080"
+              domain:
+                type: string
+                format: string
+                description: Industry domain of the subscriber. 
+                example: nic2004:52110
+              signing_public_key:
+                type: string
+                description: Signing Public Key 
+                example: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=
+              encr_public_key:
+                type: string
+                description: Encryption Public Key 
+                example: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=
+              valid_from:
+                type: string
+                format: string ($date-time)
+                example: "2022-04-05T05:56:52.470618Z3"
+                description: Keys valid from
+              valid_until:
+                type: string
+                format: string ($date-time)
+                example: "2026-04-05T05:56:52.470618Z7"
+                description: Keys valid until
+              created:
+                type: string
+                format: string ($date-time)
+                example: "2026-04-05T05:56:52.470618Z7"
+                description: Created timestamp
+              updated:  
+                type: string
+                format: string ($date-time)
+                example: "2026-04-05T05:56:52.470618Z7"
+                description: Updated timestamp
+        "500":
+          description: "Server Side Error. Call Helpdesk for details."
+      tags:
+          - Key rotation of network participant - buyerApp or sellerApp
+          
+  /ondc/vlookup:
+    post:
+      summary: Get public keys of network participants
+      description: The network participant will trigger the lookup call to the registry to fetch its public keys.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: VLookup request body
+        schema:
+          $ref: "#/definitions/ReqVLookup"  
+      responses:
+        "200":
+          description: VLookup received
+          schema:
+            type: object
+            properties:
+              subscriber_id:
+                type: string
+                format: string
+                description: A unique ID describing a subscriber on a network.
+                example: "pilot-gateway-1.beckn.nsdl.co.in/option1"
+              country:
+                type: string
+                format: string
+                description: Country code
+                example: "IND"
+              city:
+                type: string
+                format: string
+                description: City code
+                example: "std:080"
+              signing_public_key:
+                type: string
+                description: Signing Public Key 
+                example: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=
+              encr_public_key:
+                type: string
+                description: Encryption Public Key 
+                example: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=
+              valid_from:
+                type: string
+                format: string ($date-time)
+                example: "2022-04-05T05:56:52.470618Z3"
+                description: Keys valid from
+              valid_until:
+                type: string
+                format: string ($date-time)
+                example: "2026-04-05T05:56:52.470618Z7"
+                description: Keys valid until
+              created:
+                type: string
+                format: string ($date-time)
+                example: "2026-04-05T05:56:52.470618Z7"
+                description: Created timestamp
+              updated:  
+                type: string
+                format: string ($date-time)
+                example: "2026-04-05T05:56:52.470618Z7"
+                description: Updated timestamp
+              unique_key_id:
+                type: string
+                format: string
+                example: "dba638cc-20cc-40ea-a08b-b4a39bfb3eab"
+                description: Unique key of subcriber
+              network_participant:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    subscriber_url:
+                      type: string
+                      format: string
+                      description: URL to be verified and configured for network participation.The given URL should have valid SSL Certificate that should be able to pass OCSP check. https://certificatetools.com/ocsp-checker can be used to check prior to submitting the request.
+                      example: "/test4"
+                    domain:
+                      type: string
+                      format: string
+                      description: Industry domain of the subscriber. 
+                      example: nic2004:52110
+                    type:
+                      type: string
+                      format: string
+                      description: buyerApp or sellerApp 
+                      example: "sellerApp"
+                    msn:
+                    city_code:
+                       type: string
+                       format: string
+                       description: City code
+                       example: "std:080"
+                    seller_on_record:
+                      type: array
+        "500":
+          description: "Server Side Error. Call Helpdesk for details."
+      tags:
+          - Key rotation of network participant - buyerApp or sellerApp
+    
+definitions:
+  ReqLookup:
+    type: object
+    required:
+    - subscriber_id
+    - country
+    - city
+    - domain
+    - type
+    properties:
+      subscriber_id:  
+        type: string  
+        description: A unique ID describing a subscriber on a network. 
+      country:  
+        type: string  
+        description: Country code as per ISO 3166-1 and ISO 3166-2 format
+      city:
+        type: string
+        format: string
+        description: City code
+        example: "std:080"
+      domain:
+        type: string
+        format: string
+        description: Industry domain of the subscriber. 
+        example: nic2004:52110
+      type:
+        type: string
+        format: string
+        description: buyerApp or sellerApp 
+        example: "sellerApp"  
+  ReqDverify:
+    type: "object"
+    properties:
+      verReqID:
+        type: string
+        format: uuid
+        description: unique transaction ID
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      confReqID:
+        type: string
+        format: string
+        description: unique configuration request ID that was used during initiating domain verification
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      dInitAckCode:
+        type: "string"
+        format: string
+        description: ack code that was received as a successful response during initiation of domain verification
+        example: "44006271-f8aa-4540-a57e-7a045282e4b4"
+        
+  ReqVLookup:
+    type: object
+    required:
+    - sender_subscriber_id
+    - request_id
+    - timestamp
+    - signature
+    - search_parameters
+    - country
+    - domain
+    properties:
+      sender_subscriber_id:  
+        type: string  
+        description: A unique ID describing a subscriber on a network. 
+      request_id:  
+        type: string  
+        description: Country code as per ISO 3166-1 and ISO 3166-2 format
+      timeStamp:
+        type: string
+        format: date-time
+        description: request timestamp to avoid replay attack
+        example: '2016-08-29T09:12:33.001Z'
+      search_parameters:
+        type: object
+        properties:
+          country:
+            type: string
+            format: string
+            description: Country code
+            example: "IND"
+          domain:
+            type: string
+            format: string
+            description: Industry domain of the subscriber. 
+            example: nic2004:52110
+      signature:
+        type: string
+        format: string
+        description: signature 
+        example: Y8Q8yyVI4zCrsCX3e1WlKfJL8Vd7GRBjUoITIH1ISVmDfwxRfJ3xgLu0Pfw4seKRTaGuOdyxDFdVspJckdPFAA==      
+  
+  ReqDinit:
+    type: object
+    required:
+    - subscriber_id
+    - subscriber_url
+    - city
+    - valid_from
+    - valid_until
+    - domain
+    - type
+    - signing_public_key
+    - encr_public_key
+    - callback_url
+    - confReqID
+    properties:
+      confReqID:
+        type: string
+        format: string
+        description: unique configuration request ID
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      subscriber_id:
+        type: string
+        format: string
+        description: A unique ID describing a subscriber on a network.
+        example: "https://sit.grab.in/ondc"
+      subscriber_url:
+        type: string
+        format: string
+        description: URL to be verified and configured for network participation.The given URL should have valid SSL Certificate that should be able to pass OCSP check. https://certificatetools.com/ocsp-checker can be used to check prior to submitting the request.
+        example: "https://sit.grab.in/ondc/sellerApp/"
+      city:
+        type: string
+        format: string
+        description: City code
+        example: "std:080"
+      valid_from:
+        type: string
+        format: string ($date-time)
+        example: "2022-04-05T05:56:52.470618Z3"
+        description: Keys valid from
+      valid_until:
+        type: string
+        format: string ($date-time)
+        example: "2026-04-05T05:56:52.470618Z7"
+        description: Keys valid until
+      domain:
+        type: string
+        format: string
+        description: Industry domain of the subscriber. 
+        example: nic2004:52110
+      type:
+        type: string
+        format: string
+        description: buyerApp or sellerApp. 
+        example: "sellerApp"
+      signing_public_key:
+        type: string
+        description: Signing Public Key 
+        example: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=
+      encr_public_key:
+        type: string
+        description: Encryption Public Key 
+        example: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=
+      callback_url:
+        type: string
+        description: Callback URL to convey code to be used while verifying keys
+        example: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=
+      timeStamp:
+        type: string
+        format: date-time
+        description: request timestamp to avoid replay attack
+        example: '2016-08-29T09:12:33.001Z'
+  ReqKinit:
+    type: object
+    required:
+    - keyVerReqID
+    - dVerifyAckCode
+    - message
+    - signature
+    - encMessage
+    properties:
+      keyVerReqID:
+        type: string
+        format: uuid
+        description: unique transaction ID. Can be used to trace. 
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      dVerifyAckCode:
+        type: string
+        format: uuid
+        description: Success Code issued after successful verification of domain in case of initial onboarding; for subsequent verification of configured public keys use Subscribe reqID
+        example: e300f1ee-5c54-3b01-80e6-d701748f0859
+      signature:
+        type: string
+        description: signature of successful verification ack code (dVerifyAckCode) of domain using Network Participant's signing private key
+        example: tDUVbfPJCxwKP4rEaJMJHGhIXk5hqz/Ex8iTmYvLg7zqbFbzh+5Unr7TDq4Lmf39XefASz5wD3/DbdBWTIpODw
+      encMessage:
+        type: string
+        description: Successful verification ack code (dVerifyAckCode) of domain that has been Encrypted(Enc) using Network Participant's encryption private key  (NPpriv) and then further encrypted using Registry's Public Key (Rpub). 
+          Rpub-Enc(NPpriv-Enc(dVerifyAckCode))
+        example: asKcNGM/lyAQeq/EewNJ0mJMD45j4y/VwasUXP8zHkDccAb7q4CmQt6c6TagSEkS
+
+  Response:
+    type: object
+    properties:
+      status:
+        type: string
+        format: string
+        description: It will indicate whether there is any "error" or its a "success". In Case of "error", "errorCode" shall be available for knowing details; and in case of "success", "ackCode"
+        example: "error"
+      message:
+        type: object
+        properties:
+          ackCode:
+            type: string
+            format: string
+            description: "It will indicate details of success. \nFor /verifyD/init: Place the same in URL as \"ondc-site-verification.html\" at URL and copy paste below content,\n <html><head><meta name='ondc-site-verification' content='REPLACE_WITH_ACK_CODE_VALUE' /></head><body>ONDC Site Verification Page</body></html>\n For /verifyD/verify: For success, it would return a ack code(DverifyAckCode)."
+            example: 44006271-f8aa-4540-a57e-7a045282e4b4
+          errCode:
+            type: string
+            format: string
+            description: "It will indicate details of error. please refer list of errors here.\n For /verifyD/init, 100 - JSON Validation Failed, 101 - .... \n For /verifyD/verify <NEED TO DEFINE>"
+            example: 101
+          details:
+            type: string
+            format: string
+            description: "It will indicate details of error OR sucess. please refer list of errors here.\n For /verifyD/init, 100 - JSON Validation Failed, 101 - .... \n For /verifyD/verify  <NEED TO DEFINE>"
+            example: 101
+  ReqSubscribe:
+    type: object
+    properties:
+      reqID:
+        type: string
+        format: UUID
+        description: A unique requset ID.
+        example: "44006271-f8aa-4540-a57e-7a045282e4b4"
+      subscriber_id:
+        type: string
+        format: string
+        description: A unique ID describing a subscriber on a network.
+        example: "https://sit.grab.in/ondc"
+      type:
+        type: string
+        format: string
+        description: buyerApp or sellerApp. 
+        example: "sellerApp"
+      country:
+        type: string
+        format: string
+        description: Country code
+        example: "IND"
+      city:
+        type: string
+        format: string
+        description: City code
+        example: "std:080"
+      domain:
+        type: string
+        format: string
+        description: Industry domain of the subscriber. 
+        example: nic2004:52110
+      signing_public_key:
+        type: string
+        description: Signing Public Key 
+        example: QSax2KT4UiTUWUqoVUaEcWhBcGTTNu+Sf8EMDRY1GaE=
+      encr_public_key:
+        type: string
+        description: Encryption Public Key 
+        example: O74ukMymk4KZnVs3sZhU2U7RXpaZ/qiOUMk5NWt6rbI=
+      valid_from:
+        type: string
+        format: string ($date-time)
+        example: "2022-04-05T05:56:52.470618Z3"
+        description: Keys valid from
+      valid_until:
+        type: string
+        format: string ($date-time)
+        example: "2026-04-05T05:56:52.470618Z7"
+        description: Keys valid until
+      nonce: 
+        example:  "test-random-nounce"
+      previous_req_id:
+        type: string
+        format: string ($date-time)
+        example: "2026-04-05T05:56:52.470618Z7"
+        description: Request ID of last successful subscribe or Ack Code of verifyK/init for first subscribe
+      signature:
+        type: string
+        format: sign with old signing private key (reqID, subscriber_id, country, city, domain, signing_public_key, encr_public_key, valid_from, valid_until, nonce, previous_req_id)
+        example: tDUVbfPJCxwKP4rEaJMJHGhIXk5hqz/Ex8iTmYvLg7zqbFbzh+5Unr7TDq4Lmf39XefASz5wD3/DbdBWTIpODw
+  
+  RequestData:
+      type: object
+      properties:
+        sign:
+          type: string
+          format: string
+          description: Signature
+          example: 8B5DLTKkm/0dP+xXZ/1RlbSEgbg+4fgU1kn+aVFJasR2OnFLmizJmFSswcDl1IBRmyrNPfTZZVbl++biljrqAg==
+        requestData:
+          type: string
+          format: string
+          description: Value
+          example: Text data for signature
+        clientPublicKey:
+          type: string
+          format: string
+          description: Public key
+          example: MCowBQYDK2VuAyEAIdWagNWnmgro84jyJv/y21WRqgSeL05ZcUsuAMVJC3Y=
+       
+  RequestSigData:
+      type: object
+      properties:
+        requestData:
+          type: string
+          format: string
+          description: Value
+          example: Text data for signature
+        clientPrivateKey:
+          type: string
+          format: string
+          description: Private key
+          example: MFECAQEwBQYDK2VuBCIEIIiPHne7kFP5L8Ju4M6vje57LZOVoUo6qatNxQlzE4BcgSEAIdWagNWnmgro84jyJv/y21WRqgSeL05ZcUsuAMVJC3Y=
+  KeyData:
+      type: object
+      properties:
+        publicKey:
+          type: string
+          format: string
+          description: Public key
+          example: MCowBQYDK2VuAyEAIdWagNWnmgro84jyJv/y21WRqgSeL05ZcUsuAMVJC3Y=
+        privateKey:
+          type: string
+          format: string
+          description: Private key
+          example: MFECAQEwBQYDK2VuBCIEIIiPHne7kFP5L8Ju4M6vje57LZOVoUo6qatNxQlzE4BcgSEAIdWagNWnmgro84jyJv/y21WRqgSeL05ZcUsuAMVJC3Y=
+  Web:
+      type: object
+      properties:
+        domain:
+          type: string
+          format: string
+          description: Web domain for OCSP verification
+          example: https://nsdl.co.in
+  RequestEncryptData:
+      type: object
+      properties:
+        clientPrivateKey:
+          type: string
+          format: string
+          description: Network Particiant private key
+          example: MFECAQEwBQYDK2VuBCIEIIiPHne7kFP5L8Ju4M6vje57LZOVoUo6qatNxQlzE4BcgSEAIdWagNWnmgro84jyJv/y21WRqgSeL05ZcUsuAMVJC3Y=
+        proteanPublicKey:
+          type: string
+          format: string
+          description: Server public key
+          example: MFECAQEwBQYDK2VuBCIEINDj+FYrFzcQkKlvqPzARtaYzV+A229aCOII51IkhCxkgSEAlfIoajvDFLfZ/4ysTEscSsKJoW9NkGCi+f4QP3vzhBA=
+        value:
+          type: string
+          format: string
+          description: Network Particiant public key
+          example: Text
+  RequestDecryptData:
+      type: object
+      properties:
+        clientPublicKey:
+          type: string
+          format: string
+          description: Network Particiant public key
+          example: MCowBQYDK2VuAyEAIdWagNWnmgro84jyJv/y21WRqgSeL05ZcUsuAMVJC3Y=
+        proteanPrivateKey:
+          type: string
+          format: string
+          description: Server private key
+          example: MCowBQYDK2VuAyEAlfIoajvDFLfZ/4ysTEscSsKJoW9NkGCi+f4QP3vzhBA=
+        value:
+          type: string
+          format: string
+          description: Network Particiant public key
+          example: Encrypt Text        
+    
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /sujitrs/OndcNP/0.0.3
+schemes:
+ - https

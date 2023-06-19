@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/beckn-api
+    username: postgres
+    password: postgres
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
+  file:
+    name: ./logs/gateway.log
+
+ehcache:
+  cacheregion:
+    beckn-api:
+      common-cache:
+        timetolive: 86400
+        entrycount: 1000
+      lookup-cache:
+        timetolive: 1800
+        entrycount: 1000
+        
+####### Other Properties #####       
+beckn:
+  persistence:
+    type: http|db-postgres
+    audit-schema-error: true
+    file-path: ./response/
+  entity:
+    type: gateway
+    id: nsdl.co.in
+  lookup:
+    mock: false

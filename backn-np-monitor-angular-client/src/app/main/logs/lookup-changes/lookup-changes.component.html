@@ -1,0 +1,170 @@
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+      <!-- content-header component -->
+      <!-- Basic Alerts start -->
+      <section id="sample-page">
+  
+        <div class="row">
+  
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">{{ 'Lookup.title' | translate }}</h4>
+              </div>
+              <div class="card-body pb-1">
+  
+                <form class="form" [formGroup]="form">
+                  <div class="row">                  
+                    <div class="col-md-3 col-12">
+                      <div class="form-group">
+                        <label for="first-date-column">Date</label>
+                        <div style="padding-left: 30px;">
+                          <ng2-flatpickr [config]="DateRangeOptions" formControlName="date"></ng2-flatpickr>
+                        </div>
+  
+                        <div style="position: absolute;
+                        top: 32px;
+                        left: 14px;">
+                          <i class="font-medium-2" data-feather="calendar"></i>
+  
+                        </div>
+                      </div>
+  
+                    </div>
+                    <div class="col-md-3 col-12">
+                      <div class="form-group">
+                        <label for="first-date-column">Select Lookup</label>
+                        <ng-select [items]="selectIds" bindLabel="name" formControlName="selectLookupType" 
+                          [loading]="selectBasicLoading"> </ng-select>
+  
+                      </div>
+  
+                    </div>
+                    <div class="col-md-1 col-12 search-btn">
+                      <button type="button" class="btn btn-icon btn-outline-primary" (click)="searchLookups()" 
+                        rippleEffect>
+                        <span [data-feather]="'search'"></span></button>
+  
+                    </div>
+                    
+  
+                  </div>
+                </form>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+           <!-- Basic Alerts end -->
+     <section id="sample-page" *ngIf="searchFlag">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+              <span class="ml-25 align-middle">Loading...</span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  
+      <section id="sample-page">
+  
+        <div class="row">
+  
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title"> {{'Lookup.grid_title_lookup' |translate}}</h4>
+              </div>
+              <div class="col-md-12 col-12 d-flex justify-content-end">
+                <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                  <label class="d-flex align-items-center serach_text_padding"><input type="search" placeholder="Search"
+                      class="form-control ml-25" (keyup)="filterUpdate($event)"  /></label>
+                      <!-- (keyup)="filterUpdate($event)" -->
+                </div>
+              </div>
+              <!-- top paging -->
+               <div class="col-md-12 col-12 d-flex justify-content-end"   *ngIf="pagingFlag"> 
+                <ngb-pagination  class="d-flex justify-content-end pagination-rounded-flat pagination-success pagination_width"  
+                [pageSize]="toppageSize" [collectionSize]="records" [rotate]="true" [(page)]="toppage" responsive="true" (pageChange)="loadPage($event)" [boundaryLinks]="true">
+                  <ng-template ngbPaginationFirst>First</ng-template>
+                  <ng-template ngbPaginationPrevious
+                    ><span [data-feather]="'chevron-left'" [class]="'font-weight-bolder'"></span>Prev 
+                  </ng-template>
+                  <ng-template ngbPaginationNext
+                    >Next<span [data-feather]="'chevron-right'" [class]="'font-weight-bolder'"></span>
+                  </ng-template>
+                  <ng-template ngbPaginationLast>Last</ng-template>
+                </ngb-pagination>
+              </div>   
+              <!-- top paging -->
+
+              <!-- ngx-datatable-row-details -->
+              <div class="collapse-default">
+              <ngb-accordion [closeOthers]="true" activeIds="accordion-1">
+                <ngb-panel [attr.id]="'accordion-'+i" *ngFor="let item of data | slice: (page-1) * pageSize : page * pageSize; let i = index" >
+                  <ng-template ngbPanelTitle >
+                    <span class="lead collapse-title"> {{item.createdOn}} </span>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <div class="row">
+                    <div class="col-6">
+                      <span><strong> {{'Lookup.grid_col_json_request' |translate}} :</strong>
+                        <pre class="preclass">{{item.request}}</pre>
+                      </span>
+  
+                    </div>
+                    <div class="col-6">
+                      <span><strong> {{'Lookup.grid_col_json_response' |translate}} :</strong>
+                        <pre class="preclass">{{item.response}}</pre>
+                      </span>
+                    </div>
+                  </div>
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
+            </div>
+              <!-- ngx-datatable-row-details -->
+              <div class="card-footer">
+                <ngb-pagination  class="d-flex justify-content-end pagination-rounded-flat pagination-success"  
+                [pageSize]="pageSize" [collectionSize]="data.length" [rotate]="true" [(page)]="page"  [boundaryLinks]="true">
+                  <ng-template ngbPaginationFirst>First</ng-template>
+                  <ng-template ngbPaginationPrevious
+                    ><span [data-feather]="'chevron-left'" [class]="'font-weight-bolder'"></span>Prev
+                  </ng-template>
+                  <ng-template ngbPaginationNext
+                    >Next<span [data-feather]="'chevron-right'" [class]="'font-weight-bolder'"></span>
+                  </ng-template>
+                  <ng-template ngbPaginationLast>Last</ng-template>
+                </ngb-pagination>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+  
+      <!-- Basic Alerts end -->
+      <section id="sample-page" *ngIf="searchFlag">
+        <div class="row">
+  
+          <div class="col-12">
+            <div class="card">
+              <button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+                <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                <span class="ml-25 align-middle">Loading...</span>
+              </button>
+  
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </div>
+  </div>

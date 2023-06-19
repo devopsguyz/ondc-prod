@@ -1,0 +1,37 @@
+<!-- NAVBAR -->
+<ng-container *ngTemplateOutlet="navbar"></ng-container>
+<!--/ NAVBAR -->
+
+<!-- MENU -->
+<!-- <ng-container  *ngIf="authService.loginFlag">
+<ng-container *ngTemplateOutlet="menu"></ng-container>
+</ng-container> -->
+<!--/ MENU -->
+
+<!-- APP-CONTENT -->
+<div class="app-content content">
+  <div class="content-overlay"></div>
+ 
+  <!-- CONTENT -->
+  <content *ngIf="authService.loginFlag"></content>
+  <button *ngIf="!authService.loginFlag" class="btn btn-outline-primary" type="button" disabled rippleEffect>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    <span class="ml-25 align-middle">Loading...</span>
+  </button>
+  
+  <!--/ CONTENT -->
+</div>
+<!--/ APP-CONTENT -->
+<ng-template #navbar>
+  <app-navbar
+    *ngIf="!coreConfig.layout.navbar.hidden"
+    [ngClass]="
+      coreConfig.layout.navbar.customBackgroundColor === true
+        ? coreConfig.layout.navbar.background + ' ' + coreConfig.layout.navbar.backgroundColor
+        : coreConfig.layout.navbar.background
+    "
+    class="header-navbar horizontal-header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center"
+  >
+  </app-navbar>
+</ng-template>
+ 

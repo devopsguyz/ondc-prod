@@ -1,0 +1,168 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+	<changeSet id="1" author="sha">
+		<sql>
+			CREATE TABLE IF NOT EXISTS public.np_api_logs
+			(
+			    id character(36) COLLATE pg_catalog."default" NOT NULL,			  
+			    jsn_rqst jsonb,
+			    jsn_rspns jsonb,
+			    rspns_tm integer,
+			    typ character varying(255) COLLATE pg_catalog."default",
+			    actv boolean,
+			    sft_dlt boolean,
+			    vrsn integer,
+			    api_vrsn integer,
+			 src_ip character varying(255) COLLATE pg_catalog."default",
+			 updtd_src_ip character varying(255) COLLATE pg_catalog."default",
+			    crtd_by character(36) COLLATE pg_catalog."default",
+			    crt_tm_stmp timestamp with time zone,
+			    updtd_by character(36) COLLATE pg_catalog."default",
+			    updtd_tm_stmp timestamp with time zone,
+			    CONSTRAINT np_api_logs_pkey PRIMARY KEY (id)
+			)
+			
+			TABLESPACE pg_default;
+		</sql>
+	</changeSet>
+
+	<changeSet id="2" author="sha">
+		<sql>
+			CREATE TABLE IF NOT EXISTS public.np_master
+			(
+			    id character(36) COLLATE pg_catalog."default" NOT NULL,
+			   sbscrbr_id character varying(255) COLLATE pg_catalog."default",
+			    sbscrbr_url character varying(255) COLLATE pg_catalog."default",
+			    ack_cd character varying(255) COLLATE pg_catalog."default",
+			    cll_bck_url character varying(255) COLLATE pg_catalog."default",
+			    cty character varying(255) COLLATE pg_catalog."default",
+			    cntry character varying(255) COLLATE pg_catalog."default",
+			    dmn character varying(255) COLLATE pg_catalog."default",
+			    dvrfctn_ack_cd character varying(255) COLLATE pg_catalog."default",
+			    encr_publc_ky character varying(255) COLLATE pg_catalog."default",
+			    ky_vrfctn character varying(255) COLLATE pg_catalog."default",
+			    ocsp_vldtn boolean,
+			    sgnng_pblc_ky character varying(255) COLLATE pg_catalog."default",
+			    typ character varying(255) COLLATE pg_catalog."default",
+			    undr_dmn_vrfctn boolean,
+			    valid_from character varying(255) COLLATE pg_catalog."default",
+			    valid_until character varying(255) COLLATE pg_catalog."default",
+			    ver_rq_id character varying(255) COLLATE pg_catalog."default",
+			    vrfy_ack_cd character varying(255) COLLATE pg_catalog."default",
+			    actv boolean,
+			    sft_dlt boolean,
+			    vrsn integer,
+			    api_vrsn integer,
+			    src_ip character varying(255) COLLATE pg_catalog."default",
+			    updtd_src_ip character varying(255) COLLATE pg_catalog."default",
+			    crtd_by character(36) COLLATE pg_catalog."default",
+			    crt_tm_stmp timestamp with time zone,
+			    updtd_by character(36) COLLATE pg_catalog."default",
+			    updtd_tm_stmp timestamp with time zone,
+			  CONSTRAINT np_master_pkey PRIMARY KEY (id)
+			)
+			
+			TABLESPACE pg_default;
+		</sql>
+	</changeSet>
+	<changeSet id="3" author="sha">
+		<sql>
+			CREATE TABLE IF NOT EXISTS public.np_onboarding_request
+			(
+			    id character(36) COLLATE pg_catalog."default" NOT NULL,
+			    sbscrbr_id character varying(255) COLLATE pg_catalog."default",
+			    cnf_rq_id character varying(255) COLLATE pg_catalog."default",
+			    api_lgs_id character(36) COLLATE pg_catalog."default",
+			    d_int_ack_cd character varying(255) COLLATE pg_catalog."default", 
+			    actv boolean,
+			    sft_dlt boolean,
+			    vrsn integer,
+			    api_vrsn integer,
+			    src_ip character varying(255) COLLATE pg_catalog."default",
+			    updtd_src_ip character varying(255) COLLATE pg_catalog."default",
+			    crtd_by character(36) COLLATE pg_catalog."default",
+			    crt_tm_stmp timestamp with time zone,
+			    updtd_by character(36) COLLATE pg_catalog."default",
+			    updtd_tm_stmp timestamp with time zone,
+			    CONSTRAINT np_onboarding_request_pkey PRIMARY KEY (id)
+			)
+			
+			TABLESPACE pg_default;
+		</sql>
+	</changeSet>
+
+	<changeSet id="4" author="sha">
+		<sql>
+		 CREATE TABLE IF NOT EXISTS public.np_subscribe_request
+		(
+		    id character(36) COLLATE pg_catalog."default" NOT NULL,
+		    rq_id character varying(255) COLLATE pg_catalog."default",
+		    sbscrbr_id character varying(255) COLLATE pg_catalog."default",
+		    api_lgs_id character(36) COLLATE pg_catalog."default",
+		    chllng_stts boolean,
+		    actv boolean,
+		    sft_dlt boolean,
+		    vrsn integer,
+		    api_vrsn integer,
+		    src_ip character varying(255) COLLATE pg_catalog."default",
+		    updtd_src_ip character varying(255) COLLATE pg_catalog."default",
+		    crtd_by character(36) COLLATE pg_catalog."default",
+		    crt_tm_stmp timestamp with time zone,
+		    updtd_by character(36) COLLATE pg_catalog."default",
+		    updtd_tm_stmp timestamp with time zone,
+		    CONSTRAINT np_subscribe_request_pkey PRIMARY KEY (id)
+		)
+		
+		TABLESPACE pg_default;
+		</sql>
+	</changeSet>
+	<changeSet id="5" author="sha">
+		<sql>
+				CREATE TABLE IF NOT EXISTS public.registry_keys
+			(
+			    id character(36) COLLATE pg_catalog."default" NOT NULL,
+			    prvt_ky character varying(255) COLLATE pg_catalog."default",
+			    pblc_ky character varying(255) COLLATE pg_catalog."default",
+			    typ character varying(255) COLLATE pg_catalog."default",
+			    actv boolean,
+			    sft_dlt boolean,
+			    vrsn integer,
+			    api_vrsn integer,
+			    src_ip character varying(255) COLLATE pg_catalog."default",
+			    updtd_src_ip character varying(255) COLLATE pg_catalog."default",
+			    crtd_by character(36) COLLATE pg_catalog."default",
+			    crt_tm_stmp timestamp with time zone,
+			    updtd_by character(36) COLLATE pg_catalog."default",
+			    updtd_tm_stmp timestamp with time zone,
+			    CONSTRAINT registry_keys_pkey PRIMARY KEY (id)
+			)
+			
+			TABLESPACE pg_default;
+		</sql>
+	</changeSet>
+	<changeSet id="6" author="sha">
+		<sql>
+				  alter table if exists np_onboarding_request 
+       add column sbscrbr_url varchar(255)
+		</sql>
+	</changeSet>
+	<changeSet id="7" author="sha">
+		<sql>
+				alter table if exists np_master 
+       add column sbscrbr_url_dmn varchar(255)
+		</sql>
+	</changeSet>
+	<changeSet id="8" author="sha">
+		<sql>
+				 alter table if exists np_master 
+       add column stts varchar(255) default 'SUBSCRIBED'
+		</sql>
+	</changeSet>
+	 
+	     
+</databaseChangeLog>

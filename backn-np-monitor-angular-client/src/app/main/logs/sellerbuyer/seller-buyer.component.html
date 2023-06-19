@@ -1,0 +1,115 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- content-header component -->
+    <!-- Basic Alerts start -->
+    <section id="sample-page">
+
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">
+                {{ ( type == 'seller' ? 'SELLERBUYER.titleSeller': 'SELLERBUYER.titleBuyer') | translate }}</h4>
+            </div>
+            <div class="card-body pb-1">
+
+              <form class="form" [formGroup]="form">
+                <div class="row">
+                  <div class="col-md-3 col-12">
+                    <div class="form-group">
+                      <label for="first-date-column">Date</label>
+                      <div style="padding-left: 30px;">
+                        <ng2-flatpickr [config]="DateRangeOptions" formControlName="date"></ng2-flatpickr>
+                      </div>
+
+                      <div style="position: absolute;
+                        top: 32px;
+                        left: 14px;">
+                        <i class="font-medium-2" data-feather="calendar"></i>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-1 col-12 search-btn">
+                    <button type="button" class="btn btn-icon btn-outline-primary" (click)="searchAction()"
+                      rippleEffect>
+                      <span [data-feather]="'search'"></span></button>
+
+                  </div>
+
+
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Basic Alerts end -->
+    <section id="sample-page" *ngIf="searchFlag">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+              <span class="ml-25 align-middle">Loading...</span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="sample-page">
+
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+           
+            <div class="col-md-12 col-12 d-flex justify-content-end" style="padding-top: 10px;">
+              <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                <label class="d-flex align-items-center serach_text_padding"><input type="search" placeholder="Search"
+                    class="form-control ml-25" (keyup)="filterUpdate($event)" /></label>
+              </div>
+            </div>
+            <!-- ngx-datatable-row-details -->
+            <ngx-datatable #tableRowDetails_GatewayToBuyer class="bootstrap core-bootstrap"
+              [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5"
+              [rows]="data" [scrollbarH]="true">
+             
+              <ngx-datatable-column *ngIf="typeSellerFlag" name="{{ 'SELLERBUYER.seller' |translate}}" prop="sellerId"
+                [width]="200">
+
+              </ngx-datatable-column>
+           
+              <ngx-datatable-column name="{{'SELLERBUYER.domain' |translate}}" prop="domain" [width]="100">
+              </ngx-datatable-column>
+              <ngx-datatable-column name="{{'SELLERBUYER.action' |translate}}" prop="action" [width]="100">
+              </ngx-datatable-column>
+              <ngx-datatable-column *ngIf="!typeSellerFlag" name="{{ 'SELLERBUYER.buyer' |translate}}" prop="buyerId"
+              [width]="200">
+
+            </ngx-datatable-column>
+              <ngx-datatable-column name="{{'SELLERBUYER.count' |translate}}" prop="count" [width]="100">
+              </ngx-datatable-column>
+            </ngx-datatable>
+            <!-- ngx-datatable-row-details -->
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+  </div>
+</div>

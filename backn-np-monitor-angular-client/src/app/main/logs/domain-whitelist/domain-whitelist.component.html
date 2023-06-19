@@ -1,0 +1,112 @@
+
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <section id="sample-page">
+
+            <div class="row">
+      
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4 class="card-title"> {{'DOMAINWHITELIST.grid_title_Domain_Whitelist' |translate}}</h4>
+                  </div>
+                  
+                  <div class="col-md-12 col-12 d-flex justify-content-end">
+                    <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pl-1 pl-md-0 pb-md-0">
+                      <label class="d-flex align-items-center serach_text_padding"><input
+                         type="search" placeholder="Search" (keyup)="filterUpdate($event)"
+                          class="form-control ml-25"  /></label>
+                    </div>
+                     <button class="btn btn-primary btn_add_padding" type="button"  (click)="open(mymodal)"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">                   
+                            ADD
+                     </button>                     
+                  </div>
+
+                  <!-- Modal -->
+                <ng-template #mymodal let-modal>
+                  <form class="form form-horizontal" [formGroup]="form">
+                    <div class="modal-header"> 
+                       <b>Domain WhiteList</b>
+                    </div>
+                    <div class="modal-body">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-group row">
+                          <div class="col-sm-3 col-form-label" aria-disabled="true">
+                            <label>Domain Name</label>
+                          </div>
+                          <input type="text" hidden=" true" id="domain_name" class="form-control" formControlName="uuid" name="fname" [disabled]="true" />
+                          <div class="col-sm-9">
+                            <input type="text" id="domain_name" class="form-control" formControlName="domain" name="fname" />
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="form-group row">
+                            <!-- <div class="row"> -->
+                              <div class="col-sm-3 col-form-label">
+                                Allowed
+                              </div>
+                                <div class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input col-sm-9" id="customCheck1" formControlName="allow"/>
+                                  <label class="custom-control-label" for="customCheck1"></label>
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" (click)="showToaster()">Save </button>
+                        <button type="button" #closebutton class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+                      </div>
+                    </div>
+                  </form>
+                  
+                </ng-template> 
+                  <!-- ngx-datatable-row-details -->
+                  <ngx-datatable [rowClass]="onGetRowClass" #tableRowDetails class="bootstrap core-bootstrap"
+                    [columnMode]="ColumnMode.force" [headerHeight]="40" [footerHeight]="50" [rowHeight]="'auto'" [limit]="5"
+                      [scrollbarH]="true" [rows]='rows' [count]="totalCount" [limit]="dataParams.page_size">
+                    <!-- Row Detail Template -->
+                    <ngx-datatable-row-detail [rowHeight]="'auto'">
+                    </ngx-datatable-row-detail>
+                    <ngx-datatable-column [width]="50" [resizeable]="false" [sortable]="false" [draggable]="false"
+                      [canAutoResize]="false">
+                      <ng-template let-row="row" let-expanded="Edition" ngx-datatable-cell-template>
+                        <a href="javascript:void(0)" 
+                           title="Edition" icon="Edit2Icon"
+                          (click)="rowDetailsToggleEdition(row,tableRowDetails_buyer_to_Gateway)">
+                        </a>
+                      </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="{{'DOMAINWHITELIST.grid_col_Domain' |translate}}" prop="domain"
+                      [width]="200">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="{{'DOMAINWHITELIST.grid_col_Allow' |translate}}" prop="allow" [width]="80">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="{{'DOMAINWHITELIST.grid_col_Created' |translate}}"
+                      prop="createdDate" [width]="130"></ngx-datatable-column>
+                    <ngx-datatable-column name="{{'DOMAINWHITELIST.grid_col_Modified' |translate}}" prop="updatedDate"
+                      [width]="80">
+                    </ngx-datatable-column>
+                    <ngx-datatable-column name="{{'DOMAINWHITELIST.grid_col_Action' |translate}}" 
+                      [width]="5" sortable="false" prop="uuid">
+                        <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value"
+                        let-row="row"> 
+                             <i class="fa fa-pencil mr-4" (click)="edit(row)" aria-hidden="true"></i>   
+                        </ng-template>
+                    </ngx-datatable-column>
+                  </ngx-datatable>
+                  <!-- ngx-datatable-row-details -->
+
+
+                  <!--meee-->
+                 
+      
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+</div>

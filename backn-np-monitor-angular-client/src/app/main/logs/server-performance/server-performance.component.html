@@ -1,0 +1,103 @@
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <!-- content-header component -->
+        <!-- Basic Alerts start -->
+        <section id="sample-page">
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">server performance</h4>
+                        </div>
+                        <div class="card-body pb-1">
+                            <form class="form" [formGroup]="form">
+                                <div class="row">
+                                    <div class="col-md-3 col-12">
+                                        <div class="form-group">
+                                            <label for="first-date-column">Date</label>
+                                            <div style="padding-left: 30px;">
+                                              <ng2-flatpickr [config]="DateRangeOptions" formControlName="date" ></ng2-flatpickr>
+                                            </div>
+                      
+                                            <div style="position: absolute;
+                                            top: 32px;
+                                            left: 14px;">
+                                              <i class="font-medium-2" data-feather="calendar"></i>
+                      
+                                            </div>
+                                          </div>
+                                    </div>
+                                    <div class="col-md-1 col-12 search-btn">
+                                      <button type="button" class="btn btn-icon btn-outline-primary" (click)="searchLogsDateRange()"
+                                        rippleEffect>
+                                        <span [data-feather]="'search'"></span>
+                                    </button>
+                  
+                                    </div>
+                                  
+                                   
+                  
+                                  </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Basic Alerts end -->
+        <section id="sample-page" *ngIf="searchFlag">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card">
+                        <button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                            <span class="ml-25 align-middle">Loading...</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sample-page" *ngIf="logsByDate">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+
+                        <ngx-datatable class="bootstrap core-bootstrap" [columnMode]="'force'" [headerHeight]="50"
+                            [footerHeight]="50" [rowHeight]="'auto'" [columns]="dataTablecolumns"
+                            [rows]="responsePerformance" [count]="responsePerformance.length">
+
+                        </ngx-datatable>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="sample-page" *ngIf="searchFlag">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="card">
+                        <button class="btn btn-outline-primary" type="button" disabled rippleEffect>
+                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                            <span class="ml-25 align-middle">Loading...</span>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- <div id="chartContainer" style="height: 370px; width: 100%; margin:auto;"></div> -->
+
+    </div>
+</div>

@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "e81a4abc-db07-415a-9e2b-9e7bc1864992",
+		"name": "ONDC_NP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/ondc/verifyParticipant/verifyD/init",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"confReqID\": \"d290f1ee-6c54-4b01-90e6-d701748f0853\",\r\n  \"subscriber_id\": \"https://sit.grab.in\",\r\n  \"subscriber_url\": \"https://fossgentechnologies.com\",\r\n  \"city\": \"std:080\",\r\n  \"valid_from\": \"2022-04-05T05:56:52.470618Z3\",\r\n  \"valid_until\": \"2026-04-05T05:56:52.470618Z7\",\r\n  \"domain\": \"nic2004:52110\",\r\n  \"type\": \"sellerApp\",\r\n  \"signing_public_key\": \"K0nBHfcCE4oCx3+awNM25p+GvcMrwqbc7XkC2MSLKmA=\",\r\n  \"encr_public_key\": \"MCowBQYDK2VuAyEAHH8kACAM75hrDMdSjX3sfulqVdEE0f3ZOpy0EtVR3wg=\",\r\n  \"callback_url\": \"http://localhost:9003/ondc/on/subcribe\",\r\n  \"timeStamp\": \"2016-08-29T09:12:33.001Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9002/ondc/verifyParticipant/verifyD/init",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"ondc",
+						"verifyParticipant",
+						"verifyD",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ondc/verifyParticipant/verifyD/verify",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"verReqID\": \"d290f1ee-6c54-4b01-90e6-d701748f0853\",\r\n  \"confReqID\": \"d290f1ee-6c54-4b01-90e6-d701748f0853\",\r\n  \"dInitAckCode\": \"8d5435b5-77cb-4c78-907f-a31fcbebbc66\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9002/ondc/verifyParticipant/verifyD/verify",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"ondc",
+						"verifyParticipant",
+						"verifyD",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ondc/verifyParticipant/verifyK/init",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"keyVerReqID\": \"d290f1ee-6c54-4b01-90e6-d701748f0853\",\r\n    \"dVerifyAckCode\": \"67d8b568-5b0d-4a34-aac3-8f761c22f541\",\r\n    \"signature\": \"0OQ9oUJdVbw3AWRcmyA28Y8ZPpuvN3+kX6HoHhlN9IkdVCz36RlDY7X1stcoWoQbUikfZ3A0UPysuMVYh6BiDQ==\",\r\n    \"encMessage\": \"qIaNQQC/yncXEGcVfa0TAiD6wMBzhiSd8ZsXmYbgPfADQWb/rpBDbPAD3bUn1H4l\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9002/ondc/verifyParticipant/verifyK/init",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"ondc",
+						"verifyParticipant",
+						"verifyK",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ondc/key/subscribe",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"client_private_key\": \"MFECAQEwBQYDK2VuBCIEIGDMqcp4yHbFFcH2eTqPK7pOUerhubc0Xggqfps9H8ZDgSEAHH8kACAM75hrDMdSjX3sfulqVdEE0f3ZOpy0EtVR3wg=\",\r\n    \"protean_public_key\": \"MCowBQYDK2VuAyEALtPj74XkIrkyxTqyssjtYJ3KRND5FnzK5MDrwlK3kC8=\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9003/ondc/keys/subcribe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9003",
+					"path": [
+						"ondc",
+						"keys",
+						"subcribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ondc/subscribe",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reqID\": \"44006271-f8aa-4540-a57e-7a045282e4b5\",\r\n    \"subscriber_id\": \"https://sit.grab.in\",\r\n    \"type\": \"sellerApp\",\r\n    \"country\": \"IND\",\r\n    \"city\": \"std:080\",\r\n    \"domain\": \"nic2004:52110\",\r\n    \"signing_public_key\": \"93T0I/ogS4Z1x2Z6DM+GbCy3hej0lLytr9FKc9yJWNQ=\",\r\n    \"encr_public_key\": \"MCowBQYDK2VuAyEA+XpYc09S8X8mkgNTlf6nlPRbL46TCwEXlAIkjP5tRh4=\",\r\n    \"valid_from\": \"2022-04-05T05:56:52.470618Z3\",\r\n    \"valid_until\": \"2026-04-05T05:56:52.470618Z7\",\r\n    \"nonce\": \"test-random-nounce\",\r\n    \"previous_req_id\": \"d290f1ee-6c54-4b01-90e6-d701748f0853\",\r\n    \"signature\": \"1V62TLcX0Wj/GCJJLKMGKdME6k2dzw+XZp0AM3NPuUr47oyQRz3K0F5bQW6Yp7g7+0JNT1oGdR3UWoLYG1TvDQ==\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9002/ondc/subscribe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"ondc",
+						"subscribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ondc/on/subscribe",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subscriber_id\": \"https://sit.grab.in/ondc\",\r\n    \"challenge\": \"oxghfkOxRnm7ITNBe56cEwjHs4pO0nSbAIqUpSO68lOYekKZraYQSNHrfzM1xiKL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9003/ondc/on/subcribe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9003",
+					"path": [
+						"ondc",
+						"on",
+						"subcribe"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ondc/lookup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"subscriber_id\": \"https://sit.grab.in/ondc\",\r\n    \"country\": \"IND\",\r\n    \"city\": \"std:080\",\r\n    \"type\": \"sellerApp\",\r\n    \"domain\": \"nic2004:52110\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9002/ondc/lookup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"ondc",
+						"lookup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/ondc/generate/server/key",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9002/ondc/generate/registry/key",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9002",
+					"path": [
+						"ondc",
+						"generate",
+						"registry",
+						"key"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
