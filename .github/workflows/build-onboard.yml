@@ -13,8 +13,8 @@ env:
   INSTANCE: 2
   SERVICE_NAME: onboarding/demo
   PROJECT_ID: grafana-monitoring-demo # TODO: update Google Cloud project id
-  #REGION: asia-south1 # TODO: update Cloud Run service region
-  #PORT: 9002
+  REGION: asia-south1 # TODO: update Cloud Run service region
+  PORT: 9002
 
 jobs:
   build:
@@ -53,3 +53,33 @@ jobs:
           docker images
           docker push ${{ env.IMAGE_NAME }}
           docker images
+    
+    - name: Create Service declaration   
+      run: |-
+       export IMAGE='${{ env.IMAGE_NAME }}'
+       export SERVICE='${{ env.SERVICE_NAME }}'
+       export PORT='${{ env.PORT }}'
+       export INSTANCE='${{ env.INSTANCE }}'
+       envsubst < devops/service.template.yaml > service.yaml
+       
+    - name: Deploy to Cloud Run
+      id: deploy
+      uses: google-github-actions/deploy-cloudrun@v0
+      with:
+        region: ${{ env.REGION }}
+        metadata: service.yaml    
+    - name: Create Service declaration
+      run: |-
+          gcloud run services set-iam-policy i${{ env.INSTANCE }}-${{ env.SERVICE_NAME }} --project ${{ env.PROJECT_ID }} --region ${{ env.REGION }} devops/policy.yaml
+        
+    - name: Show Output
+      run: |
+         echo 'URL: ' ${{ steps.deploy.outputs.url }}   
+         echo ${{ env.IMAGE_NAME }} > image-name.txt
+         echo 'URL: ' ${{ steps.deploy.outputs.url }} >> image-name.txt
+         
+    - name: upload deployed image name
+      uses: actions/upload-artifact@v3
+      with:
+        name: image-name
+        path: image-name.txt
