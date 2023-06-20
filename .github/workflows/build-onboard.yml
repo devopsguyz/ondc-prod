@@ -7,6 +7,14 @@ name: gcp build & deploy np-onboarding
 on:
   workflow_dispatch:
 
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: asia-south1-docker.pkg.dev
+  INSTANCE: 2
+  SERVICE_NAME: onboarding
+  PROJECT_ID: grafana-monitoring-demo # TODO: update Google Cloud project id
+  #REGION: asia-south1 # TODO: update Cloud Run service region
+  #PORT: 9002
 
 jobs:
   build:
@@ -14,13 +22,18 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-
+    
+    - name: Set Image Name
+      id: set-image-name
+      run: |
+          echo "IMAGE_NAME=${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/i${{ env.INSTANCE }}-${{ env.SERVICE_NAME }}:$(git rev-parse --short HEAD)" >>${GITHUB_ENV}
+          echo "::set-output name=imagename::${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/i${{ env.INSTANCE }}-${{ env.SERVICE_NAME }}:$(git rev-parse --short HEAD)"
     - name: Build with Maven
       run: |
           pwd && ls
           whoami
           cd beckn-np-onboarding
-          mvn spring-boot:build-image -Dspring-boot.build-image.imageName=ondc-onboard:v0.0
+          mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.IMAGE_NAME }}
           
     - name: Set up Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v0.3.0
@@ -35,7 +48,5 @@ jobs:
     - name: Push Docker image
       run: |
           docker images
-          docker tag fossgen/ondc-beckn-np-onboarding:2.4.0 asia-south1-docker.pkg.dev/grafana-monitoring-demo/i2-onboarding/demo:${{ github.sha }}
-          docker images
-          docker push asia-south1-docker.pkg.dev/grafana-monitoring-demo/i2-onboarding/demo:${{ github.sha }}
+          docker push ${{ env.IMAGE_NAME }}
           docker images
