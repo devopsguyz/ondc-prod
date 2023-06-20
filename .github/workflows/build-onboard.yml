@@ -45,7 +45,6 @@ jobs:
     - name: Configure Docker to use Artifact Registry
       run: |
         echo "yes" | gcloud auth configure-docker asia-south1-docker.pkg.dev
-        cat /home/ubuntu/.docker/config.json
         
     - name: Push Docker image
       run: |
