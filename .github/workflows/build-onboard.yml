@@ -21,3 +21,5 @@ jobs:
           whoami
           cd beckn-np-onboarding
           mvn spring-boot:build-image -Dspring-boot.build-image.imageName=ondc-onboard:v0.0
+          docker tag fossgen/ondc-beckn-np-onboarding:2.4.0 asia-south1-docker.pkg.dev/grafana-monitoring-demo/i2-np-onboarding:$SHORT_SHA
+          docker push asia-south1-docker.pkg.dev/grafana-monitoring-demo/i2-np-onboarding:$SHORT_SHA
