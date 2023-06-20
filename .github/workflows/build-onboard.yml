@@ -28,12 +28,13 @@ jobs:
       run: |
           echo "IMAGE_NAME=${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/i${{ env.INSTANCE }}-${{ env.SERVICE_NAME }}:$(git rev-parse --short HEAD)" >>${GITHUB_ENV}
           echo "::set-output name=imagename::${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/i${{ env.INSTANCE }}-${{ env.SERVICE_NAME }}:$(git rev-parse --short HEAD)"
+    
     - name: Build with Maven
       run: |
           pwd && ls
           whoami
           cd beckn-np-onboarding
-          mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.IMAGE_NAME }}
+          mvn spring-boot:build-image -Dspring-boot.build-image.imageName=ondc-onboard:v0.0
           
     - name: Set up Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v0.3.0
@@ -44,9 +45,12 @@ jobs:
     - name: Configure Docker to use Artifact Registry
       run: |
         echo "yes" | gcloud auth configure-docker asia-south1-docker.pkg.dev
+        cat /home/ubuntu/.docker/config.json
         
     - name: Push Docker image
       run: |
+          docker images
+          docker tag fossgen/ondc-beckn-np-onboarding:2.4.0 ${{ env.IMAGE_NAME }}
           docker images
           docker push ${{ env.IMAGE_NAME }}
           docker images
