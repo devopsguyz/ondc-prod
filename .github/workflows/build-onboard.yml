@@ -11,7 +11,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: asia-south1-docker.pkg.dev
   INSTANCE: 2
-  SERVICE_NAME: onboarding
+  SERVICE_NAME: onboarding/demo
   PROJECT_ID: grafana-monitoring-demo # TODO: update Google Cloud project id
   #REGION: asia-south1 # TODO: update Cloud Run service region
   #PORT: 9002
