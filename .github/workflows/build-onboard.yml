@@ -7,39 +7,17 @@ name: gcp build & deploy np-onboarding
 on:
   workflow_dispatch:
 
-    #paths: 
-     #- 'beckn-np-onboarding/**'
-     #- 'beckn-sign-encrypt/**'
-env:
-  # Use docker.io for Docker Hub if empty
-  REGISTRY: gcr.io
-  INSTANCE: 2
-  SERVICE_NAME: np-onboarding
-  PROJECT_ID: grfana-monitoring-demo # TODO: update Google Cloud project id
-  REGION: asia-south-1 # TODO: update Cloud Run service region
-  PORT: 9002
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      o-imagename: ${{ steps.set-image-name.outputs.imagename }}
     
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set Image Name
-      id: set-image-name
-      run: |
-          echo "IMAGE_NAME=${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/i${{ env.INSTANCE }}-${{ env.SERVICE_NAME }}:$(git rev-parse --short HEAD)" >>${GITHUB_ENV}
-          echo "::set-output name=imagename::${{ env.REGISTRY }}/${{ env.PROJECT_ID }}/i${{ env.INSTANCE }}-${{ env.SERVICE_NAME }}:$(git rev-parse --short HEAD)"
-    
     - name: Build with Maven
       run: |
           pwd && ls
           whoami
-          #source /etc/profile.d/maven.sh
-          cd beckn-sign-encrypt
-          mvn clean install
-          cd ../beckn-np-onboarding
-          mvn spring-boot:build-image -Dspring-boot.build-image.imageName=${{ env.IMAGE_NAME }}
+          cd beckn-np-onboarding
+          mvn spring-boot:build-image -Dspring-boot.build-image.imageName=ondc-onboard:v0.0
