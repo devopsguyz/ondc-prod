@@ -38,7 +38,7 @@ jobs:
     - name: Push Docker image
       run: |
           docker images
-          docker tag fossgen/ondc-beckn-np-onboarding:2.4.0 gcr.io/grafana-monitoring-demo/i2-np-onboarding:${{ github.sha }}
+          docker tag fossgen/ondc-beckn-np-onboarding:2.4.0 asia-south1-docker.pkg.dev/grafana-monitoring-demo/i2-np-onboarding/demo:${{ github.sha }}
           docker images
-          docker push gcr.io/grafana-monitoring-demo/i2-np-onboarding:${{ github.sha }}
+          docker push asia-south1-docker.pkg.dev/grafana-monitoring-demo/i2-np-onboarding/demo:${{ github.sha }}
           docker images
